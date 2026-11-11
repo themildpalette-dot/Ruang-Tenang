@@ -48,7 +48,7 @@ nav button.on{background:linear-gradient(90deg,#f0466e,#ff8fb8);color:#fff;font-
 .q label em{display:block;font-family:"Plus Jakarta Sans";font-style:normal;font-size:12.5px;color:var(--muted);margin-top:2px}
 textarea{width:100%;min-height:88px;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font:inherit;color:var(--ink);background:#fffafc;resize:vertical;outline:none;transition:border .15s}
 textarea:focus{border-color:var(--sage)}
-textarea.big{min-height:160px}
+textarea.tall{min-height:160px}
 .btn{border:0;background:linear-gradient(90deg,#f0466e,#ff8fb8);box-shadow:0 4px 12px rgba(255,92,138,.3);color:#fff;padding:11px 20px;border-radius:999px;font:inherit;font-weight:600;cursor:pointer}
 .btn.ghost{background:#fff;box-shadow:none;border:1px solid var(--line);color:var(--ink)}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
@@ -170,6 +170,8 @@ select:focus,input:focus{border-color:var(--sage)}
 .wk h3{font-size:17px;margin:0 0 4px}.wk .sub{font-size:12.5px;color:var(--muted);margin-bottom:12px}
 .wk .best{background:#fff4f8;border-radius:12px;padding:12px;font-size:14px;margin-top:12px}
 .wk .try{background:linear-gradient(120deg,#ffd1dc,#fff0f6);border-radius:12px;padding:12px;font-size:14px;margin-top:10px}
+.savebar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.savebar .ok{font-size:13.5px;color:#1f8a5b}
 .note{font-size:12.5px;color:var(--muted);text-align:center;margin-top:10px}
 @media (max-width:480px){.moods button small{font-size:10.5px}.moods button span{font-size:22px}header h1{font-size:24px}}
 </style>
@@ -210,7 +212,7 @@ select:focus,input:focus{border-color:var(--sage)}
       <p class="label" style="margin-top:20px">Apa yang sedang kamu rasakan?</p>
       <div class="chips" id="feels"></div>
 
-      <div class="q"><label>Apa yang terjadi hari ini?<em>Ceritakan saja apa adanya, tidak perlu rapi.</em></label><textarea class="big" data-k="story" placeholder="Hari ini…"></textarea></div>
+      <div class="q"><label>Apa yang terjadi hari ini?<em>Ceritakan saja apa adanya, tidak perlu rapi.</em></label><textarea class="tall" data-k="story" placeholder="Hari ini…"></textarea></div>
       <div class="q"><label>Satu hal kecil yang kusyukuri<em>Sekecil apa pun boleh: secangkir kopi, kabar baik, istirahat sebentar.</em></label><textarea data-k="grateful" placeholder="Aku bersyukur karena…"></textarea></div>
       <div class="q"><label id="deepQ"></label><textarea data-k="deep" placeholder="Tulis pelan-pelan…"></textarea></div>
       <div class="q"><label>Apa yang ingin kulepaskan malam ini?<em>Tuliskan, lalu biarkan ia tinggal di sini, bukan di kepalamu.</em></label><textarea data-k="release" placeholder="Aku melepaskan…"></textarea></div>
@@ -219,6 +221,7 @@ select:focus,input:focus{border-color:var(--sage)}
         <div class="media" id="media"></div>
         <div class="row" id="attachRow"><label class="btn ghost attach">📎 Tambah lampiran<input type="file" id="fileIn" multiple accept="image/*,video/mp4,video/webm,video/quicktime,audio/*,application/pdf" hidden></label><span id="upMsg"></span></div>
       </div>
+      <div class="savebar"><button class="btn" id="saveJ">💾 Simpan jurnal</button><span class="ok" id="saveOk"></span></div>
     </div>
     <p class="note" id="storeNote"></p>
   </section>
@@ -427,7 +430,7 @@ function paintEntry(){
   $$("#moods button").forEach(b=>b.classList.toggle("on",+b.dataset.v===e.mood));
   $$("#feels button").forEach(b=>b.classList.toggle("on",e.feelings.includes(b.dataset.f)));
 }
-function shift(n){const d=parse(cur);d.setDate(d.getDate()+n);const k=key(d);if(k>today)return;flushNow();cur=k;paintDay()}
+function shift(n){$("#saveOk").textContent="";const d=parse(cur);d.setDate(d.getDate()+n);const k=key(d);if(k>today)return;flushNow();cur=k;paintDay()}
 $("#prevD").onclick=()=>shift(-1);$("#nextD").onclick=()=>shift(1);
 
 // ---------- saving ----------
@@ -1027,6 +1030,16 @@ function moodSong(){if(hasSong()&&optOn("songSos")&&curSnd!=="song")playSong(tru
     songEl.play().then(()=>{curSnd="song";autoTouched=true;paintSnd()}).catch(()=>{})}})();
 
 paintPin();paintSnd();checkLock();
+
+// ---------- tombol simpan ----------
+$("#saveJ").onclick=async()=>{
+  $$("textarea[data-k]").forEach(t=>{if(t.value!==((entries[cur]&&entries[cur].answers[t.dataset.k])||"")){draft().answers[t.dataset.k]=t.value}});
+  dirty.add(cur);clearTimeout(timer);$("#saveOk").textContent="Menyimpan…";
+  await flush();while(saving)await new Promise(r=>setTimeout(r,150));
+  if(dirty.size){$("#saveOk").textContent="⚠️ Belum tersimpan, coba lagi sebentar.";return}
+  const e=entries[cur];
+  $("#saveOk").textContent=e&&!isEmpty(e)?`✓ Tersimpan pukul ${nowHM().replace(":",".")}. Terima kasih sudah meluangkan waktu untuk dirimu 🌸`:"Belum ada yang ditulis hari ini.";
+};
 // ---------- history ----------
 $("#search").oninput=renderHistory;
 function renderHistory(){
