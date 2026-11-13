@@ -584,6 +584,65 @@ body.admin-mode .app,body.admin-mode .sosbtn,body.admin-mode .acct,body.admin-mo
 .adm .who{font-size:13px;color:#7a6470}
 .adm .hb{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .adm .lastupd{font-size:12px;color:#a08894;margin-left:4px}
+/* ===== konsol admin (gaya NaikPelaminan) ===== */
+.np-admin{--rose:#e9637f;--coral:#f290a6;--ink:#3a2033;--soft:#7a6470;--line:#f3dbe3;--grape:#8b5cf6;--mint:#10b981;--amber:#e08a1e;--red:#e11d48;min-height:100vh;font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink)}
+.np-admin.hide{display:none}
+.np-top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;background:rgba(255,244,247,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.np-brand{display:flex;align-items:center;gap:11px;min-width:0}
+.np-brand .ring{width:42px;height:42px;flex:none;display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,var(--rose),var(--coral));font-size:20px;box-shadow:0 6px 16px rgba(233,99,127,.32)}
+.np-brand b{display:block;font-family:Lora,serif;font-size:17px;line-height:1.12}
+.np-brand small{font-size:11.5px;color:var(--soft)}
+.np-top-acts{display:flex;gap:8px}
+.np-wrap{max-width:780px;margin:0 auto;padding:22px 16px 64px;display:flex;flex-direction:column;gap:16px}
+.np-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(78px,1fr));gap:10px}
+.np-stat{background:#fff;border:1px solid var(--line);border-top:3px solid var(--c,var(--rose));border-radius:14px;padding:14px 10px;text-align:center;box-shadow:0 4px 14px rgba(120,40,70,.05)}
+.np-stat b{display:block;font-family:Lora,serif;font-size:25px;line-height:1}
+.np-stat span{font-size:11px;color:var(--soft);font-weight:600;margin-top:5px;display:block}
+.np-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 6px 20px rgba(120,40,70,.06)}
+.np-card-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.np-card-h h2{font-family:Lora,serif;font-size:18px;margin:0;color:var(--ink)}
+.np-note{font-size:12.5px;color:var(--soft);line-height:1.5;margin:0 0 12px}
+.np-tools{display:flex;gap:8px;margin-bottom:14px}
+.np-search{flex:1;min-width:0;border:1px solid var(--line);border-radius:11px;padding:9px 12px;font:inherit;font-size:13px;background:#fdf3f6;color:var(--ink);outline:none}
+.np-sort{flex:none;border:1px solid var(--line);border-radius:11px;padding:9px 10px;font:inherit;font-size:13px;background:#fff;color:var(--ink);cursor:pointer}
+.np-h{font-size:12px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.3px;margin:0 0 8px}
+.np-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;background:#fdf3f6;border:1px solid var(--line);border-radius:11px;margin-bottom:8px}
+.np-row.pend{background:#fff8ef;border-color:#f6dcc0}
+.np-info{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}
+.np-info b{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.np-badges{display:flex;gap:6px;flex-wrap:wrap}
+.np-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.np-meta{font-size:11px;color:var(--soft)}
+.np-acts{display:flex;gap:6px;flex:0 1 auto;flex-wrap:wrap;justify-content:flex-end;max-width:62%}
+.np-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 13px;border-radius:11px;font:inherit;font-weight:700;font-size:12.5px;cursor:pointer;border:1px solid transparent;transition:.15s;color:var(--ink)}
+.np-btn.sm{padding:7px 12px}
+.np-btn.ghost{background:#fff;border-color:var(--line);box-shadow:0 2px 6px rgba(120,40,70,.05)}
+.np-btn.ghost:hover{border-color:#ecc3d0}
+.np-btn.pri{background:linear-gradient(135deg,var(--rose),var(--coral));color:#fff;box-shadow:0 6px 14px rgba(233,99,127,.28)}
+.np-btn.danger{background:#fff1f3;border-color:#fbd5dc;color:#be123c}
+.np-btn.block{width:100%;margin-top:10px;padding:12px}
+.np-btn:disabled{opacity:.6;cursor:default}
+.np-ann{width:100%;min-height:72px;resize:vertical;border:1px solid var(--line);border-radius:12px;padding:11px 13px;font:inherit;font-size:13.5px;color:var(--ink);background:#fdf3f6;outline:none}
+.np-toggle{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;font-weight:600;cursor:pointer}
+.np-toggle input{width:17px;height:17px;accent-color:var(--rose)}
+.np-empty{font-size:13px;color:var(--soft);text-align:center;padding:16px 0;margin:0}
+.np-modal{position:fixed;inset:0;z-index:250;background:rgba(58,32,51,.35);display:grid;place-items:center;padding:16px}
+.np-modal.hide{display:none}
+.np-mbox{width:100%;max-width:420px;background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(58,32,51,.25);overflow:hidden;font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:#3a2033}
+.np-mhead{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #f3dbe3}
+.np-mhead h3{margin:0;font-family:Lora,serif;font-size:18px}
+.np-mx{border:0;background:#fdf3f6;width:30px;height:30px;border-radius:50%;cursor:pointer;color:#7a6470}
+#npMB{padding:16px 18px 18px}
+#npMB p{font-size:13px;color:#7a6470;line-height:1.5;margin:0 0 12px}
+#npMB label{display:block;font-size:12px;font-weight:700;color:#7a6470;margin:0 0 6px}
+#npMB input{width:100%;border:1px solid #f3dbe3;border-radius:11px;padding:10px 12px;font:inherit;font-size:14px;margin-bottom:10px;outline:none}
+.np-merr{display:none;background:#fff1f3;color:#be123c;border:1px solid #fbd5dc;border-radius:10px;padding:9px 12px;font-size:12.5px;margin-bottom:12px}
+.np-toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:#3a2033;color:#fff;padding:11px 18px;border-radius:12px;font:600 13.5px "Plus Jakarta Sans",system-ui,sans-serif;opacity:0;pointer-events:none;transition:.25s;z-index:300;max-width:90vw;text-align:center}
+.np-toast.on{opacity:1;transform:translate(-50%,0)}
+.ann-bar{display:flex;align-items:center;gap:11px;margin:0 0 18px;padding:13px 15px;background:#3a2033;border-left:5px solid #f290a6;border-radius:13px;color:#fff;box-shadow:0 8px 22px rgba(58,32,51,.25);font-family:"Plus Jakarta Sans",system-ui,sans-serif}
+.ann-bar .ic{font-size:18px}.ann-bar .msg{flex:1;font-size:13.5px;line-height:1.45;font-weight:600;white-space:pre-wrap}
+.ann-bar button{border:0;background:rgba(255,255,255,.16);color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;flex:none}
+@media (max-width:640px){.np-row{flex-direction:column;align-items:stretch}.np-acts{max-width:none;justify-content:flex-start}.np-top{padding:11px 14px}.np-brand b{font-size:15.5px}.np-top-acts .np-btn{padding:7px 10px}}
 .wait{position:fixed;inset:0;z-index:190;background:linear-gradient(160deg,#fbe7ed,#fdf1f4 50%,#fbe8ee);display:grid;place-items:center;padding:20px}
 .wait .box{max-width:400px;text-align:center;background:#fff;border:1px solid #f6dde4;border-radius:24px;padding:32px 26px;box-shadow:0 14px 34px rgba(200,90,120,.12)}
 .wait h2{font-family:Lora,serif;color:#9c2f55;font-size:26px;margin:10px 0 8px}.wait p{color:#7a6470;font-size:14.5px;line-height:1.6;margin:0 0 18px}
@@ -642,14 +701,30 @@ body.admin-mode .app,body.admin-mode .sosbtn,body.admin-mode .acct,body.admin-mo
   <div class="row2"><button class="btn" id="waitCheck">Cek lagi</button><button class="ghost2" id="waitOut">Keluar</button></div>
 </div></div>
 <div class="acct" id="acct"><span id="acctEmail"></span><button class="adm-open hide" id="admOpen">🛡️ Admin</button><button id="logoutBtn">Keluar</button></div>
-<div class="adm hide" id="adm"><div class="ab">
-  <div class="ah"><div><div class="brand">Ruang Tenang</div><h2>Konsol Admin</h2></div><div class="hb"><span class="who" id="admWho"></span><button id="admRefresh">↻ Muat ulang</button><button id="admX">Tutup</button><button id="admOut" class="hide">Keluar</button></div></div>
-  <p class="an">Setujui akun baru sebelum bisa dipakai. Admin hanya mengelola akun, isi jurnal pengguna tetap privat dan tidak bisa dibaca dari sini.</p>
-  <div class="as" id="admStats"></div>
-  <input class="q" id="admQ" placeholder="Cari username…"><div class="lastupd" id="admLU"></div>
-  <div id="admList"></div>
-  <p class="am2" id="admMsg"></p>
-</div></div>
+<div class="np-admin hide" id="adm">
+  <header class="np-top">
+    <div class="np-brand"><div class="ring">🛡️</div><div><b>Konsol Admin</b><small>Ruang Tenang · <span id="admWho"></span></small></div></div>
+    <div class="np-top-acts"><button class="np-btn ghost" id="admPass">🔑 Sandi</button><button class="np-btn ghost" id="admOut">Keluar</button></div>
+  </header>
+  <div class="np-wrap">
+    <div class="np-stats" id="admStats"></div>
+    <div class="np-card">
+      <div class="np-card-h"><h2>Kelola Pengguna</h2><button class="np-btn ghost sm" id="admRefresh">↻ Muat ulang</button></div>
+      <p class="np-note">Akun baru harus disetujui sebelum bisa dipakai. Isi jurnal pengguna tetap privat dan tidak bisa dibaca dari sini.</p>
+      <div class="np-tools"><input id="admQ" class="np-search" placeholder="🔍 Cari nama pengguna…" autocomplete="off" autocapitalize="none"><select id="admSort" class="np-sort"><option value="new">Terbaru</option><option value="old">Terlama</option><option value="name">Nama A–Z</option><option value="active">Terakhir aktif</option></select></div>
+      <div id="admList">Memuat…</div>
+    </div>
+    <div class="np-card">
+      <div class="np-card-h"><h2>📢 Pengumuman Global</h2></div>
+      <p class="np-note">Pesan ini tampil sebagai banner di aplikasi <b>semua pengguna</b>. Kosongkan atau matikan untuk menyembunyikan.</p>
+      <textarea id="annText" class="np-ann" placeholder="Tulis pengumuman… (mis. Pemeliharaan Minggu 22.00–23.00)"></textarea>
+      <label class="np-toggle"><input type="checkbox" id="annActive"> Tampilkan ke pengguna</label>
+      <button class="np-btn pri block" id="annSave">💾 Simpan Pengumuman</button>
+    </div>
+  </div>
+</div>
+<div class="np-modal hide" id="npModal"><div class="np-mbox"><div class="np-mhead"><h3 id="npMT"></h3><button class="np-mx" id="npMX" aria-label="Tutup">✕</button></div><div id="npMB"></div></div></div>
+<div class="np-toast" id="npToast"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* ====== ISI DUA BARIS INI DENGAN DATA PROJECT SUPABASE-MU ====== */
@@ -742,9 +817,8 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     isAdm=!!st.is_admin;
     if(isAdm){openConsole();return}
     if(st.status==="active"){$("#wait").classList.add("hide");document.body.style.overflow="";clearInterval(waitT);
-      if(!opened){opened=true;readyResolve(session)}
+      if(!opened){opened=true;readyResolve(session);loadAnnouncement();setInterval(()=>{if(!document.hidden)loadAnnouncement()},120000)}
       try{await sb.rpc("rt_touch")}catch(e){}
-      if(isAdm){$("#admOpen").classList.remove("hide");pendingBadge()}
       return}
     const blocked=st.status==="blocked";
     $("#waitIc").textContent=blocked?"🔒":"⏳";$("#waitT").textContent=blocked?"Akun dinonaktifkan":"Menunggu persetujuan";
@@ -753,59 +827,89 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     clearInterval(waitT);if(!blocked)waitT=setInterval(gate,20000);
   }
   let consoleT=null;
+  const toast=t=>{const el=$("#npToast");el.textContent=t;el.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("on"),2600)};
+  function openModal(title,body){$("#npMT").textContent=title;$("#npMB").innerHTML=body;$("#npModal").classList.remove("hide");const i=$("#npMB input");if(i)setTimeout(()=>i.focus(),60)}
+  function closeModal(){$("#npModal").classList.add("hide");$("#npMB").innerHTML=""}
+  $("#npMX").onclick=closeModal;$("#npModal").addEventListener("click",e=>{if(e.target.id==="npModal")closeModal()});
+  const mErr=m=>{const e=$("#npMB .np-merr");if(e){e.textContent=m;e.style.display="block"}};
   function openConsole(){
     $("#wait").classList.add("hide");$("#auth").classList.add("hide");
     document.body.classList.add("admin-mode");document.body.style.overflow="";
-    $("#adm").classList.add("full");$("#adm").classList.remove("hide");
-    $("#admX").classList.add("hide");$("#admOut").classList.remove("hide");
+    $("#adm").classList.remove("hide");window.scrollTo(0,0);
     $("#admWho").textContent="@"+uname(session);document.title="Konsol Admin · Ruang Tenang";
     sb.rpc("rt_touch").then(()=>{},()=>{});
-    loadAdmin();clearInterval(consoleT);consoleT=setInterval(()=>{if(!document.hidden)loadAdmin(true)},30000);
+    loadAdmin();loadAnnounceEditor();clearInterval(consoleT);consoleT=setInterval(()=>{if(!document.hidden)loadAdmin(true)},30000);
   }
   $("#admOut").onclick=async()=>{await sb.auth.signOut();location.reload()};
-  $("#admRefresh").onclick=()=>loadAdmin();
+  $("#admRefresh").onclick=()=>{loadAdmin();toast("Daftar diperbarui")};
+  $("#admPass").onclick=()=>openModal("Ganti Kata Sandi",`<p>Ganti kata sandi akun admin <b>@${escA(uname(session))}</b>.</p><div class="np-merr"></div><label>Kata sandi baru</label><input type="password" id="cpA" autocomplete="new-password" placeholder="minimal 6 karakter"><label>Ulangi kata sandi baru</label><input type="password" id="cpB" autocomplete="new-password"><button class="np-btn pri block" id="cpGo">Simpan Kata Sandi</button>`);
   $("#waitCheck").onclick=()=>{$("#waitCheck").textContent="Memeriksa…";gate().finally(()=>setTimeout(()=>$("#waitCheck").textContent="Cek lagi",600))};
   $("#waitOut").onclick=async()=>{await sb.auth.signOut();location.reload()};
-  async function pendingBadge(){try{const {data}=await sb.rpc("rt_admin_users");const n=(data||[]).filter(r=>r.status==="pending").length;$("#admOpen").textContent="🛡️ Admin"+(n?" · "+n+" baru":"")}catch(e){}}
-  setInterval(()=>{if(isAdm&&!document.hidden)pendingBadge()},60000);
-  const ago=t=>{if(!t)return"belum pernah";const m=Math.round((Date.now()-Date.parse(t))/60000);return m<2?"baru saja":m<60?m+" menit lalu":m<1440?Math.round(m/60)+" jam lalu":Math.round(m/1440)+" hari lalu"};
+  function pendingBadge(){}
+  const ago=t=>{if(!t)return"belum pernah aktif";const m=Math.round((Date.now()-Date.parse(t))/60000);return"aktif "+(m<2?"baru saja":m<60?m+" menit lalu":m<1440?Math.round(m/60)+" jam lalu":m<10080?Math.round(m/1440)+" hari lalu":Math.round(m/10080)+" minggu lalu")};
   const tgl=t=>new Date(t).toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"});
   const escA=x=>String(x==null?"":x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  async function loadAdmin(keep){if(!keep)$("#admMsg").textContent="Memuat…";
+  async function loadAdmin(quiet){
     const {data,error}=await sb.rpc("rt_admin_users");
-    if(error){$("#admMsg").textContent="Gagal memuat: "+error.message;return}
-    admRows=data||[];if(!keep)$("#admMsg").textContent="";renderAdmin();
-    const lu=document.getElementById("admLU");if(lu)lu.textContent="diperbarui "+new Date().toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}
-  function renderAdmin(){
-    const wk=Date.now()-7*864e5,me=session.user.id;
-    $("#admStats").innerHTML=`<div><b>${admRows.filter(r=>r.status==="pending").length}</b><span>menunggu persetujuan</span></div><div><b>${admRows.length}</b><span>pengguna</span></div><div><b>${admRows.filter(r=>r.last_seen&&Date.parse(r.last_seen)>wk).length}</b><span>aktif 7 hari</span></div><div><b>${admRows.filter(r=>r.status==="blocked").length}</b><span>dinonaktifkan</span></div>`;
-    const q=$("#admQ").value.trim().toLowerCase();
-    const rows=admRows.filter(r=>!q||r.username.includes(q));
-    $("#admList").innerHTML=rows.map(r=>{const self=r.user_id===me;const pend=r.status==="pending",blk=r.status==="blocked";return `<div class="u ${pend?"pend":""}" data-id="${r.user_id}">
-      <div class="t"><b>@${escA(r.username)}</b>${pend?'<span class="bdg">menunggu persetujuan</span>':""}${blk?'<span class="bdg w">dinonaktifkan</span>':""}${r.is_admin?'<span class="bdg">admin</span>':""}${self?'<span class="bdg g">kamu</span>':""}${r.has_recovery?"":'<span class="bdg w">tanpa pertanyaan keamanan</span>'}</div>
-      <div class="meta">Daftar ${tgl(r.created_at)} · aktif ${ago(r.last_seen)} · ${r.days_written} hari tercatat · ${r.files} file</div>
-      <div class="acts">${self?"":pend?'<button data-a="approve" class="ok">✓ Setujui</button>':blk?'<button data-a="approve">Aktifkan lagi</button>':'<button data-a="block">Nonaktifkan</button>'}<button data-a="pw">🔑 Reset kata sandi</button>${self?"":`<button data-a="adm">${r.is_admin?"Cabut admin":"Jadikan admin"}</button><button data-a="del" class="danger">Hapus akun</button>`}</div>
-      <div class="rp hide"><input type="text" placeholder="Kata sandi baru (min. 6)" autocomplete="off"><button data-a="pwsave">Simpan</button></div></div>`}).join("")||'<p class="an">Tidak ada pengguna yang cocok.</p>';
+    if(error){$("#admList").innerHTML='<p class="np-empty">Gagal memuat. Pastikan SQL admin sudah dijalankan di Supabase.</p>';return}
+    admRows=data||[];
+    const n=k=>admRows.filter(r=>r.status===k).length;
+    const st=(l,v,c)=>`<div class="np-stat" style="--c:var(--${c})"><b>${v}</b><span>${l}</span></div>`;
+    $("#admStats").innerHTML=st("Total",admRows.length,"grape")+st("Menunggu",n("pending"),"amber")+st("Aktif",n("active"),"mint")+st("Dinonaktifkan",n("blocked"),"red");
+    renderAdmin();
   }
-  $("#admOpen").onclick=()=>{$("#adm").classList.remove("hide");document.body.style.overflow="hidden";loadAdmin()};
-  $("#admX").onclick=()=>{$("#adm").classList.add("hide");document.body.style.overflow=""};
-  $("#admQ").oninput=renderAdmin;
-  $("#admList").addEventListener("click",async e=>{const b=e.target.closest("button[data-a]");if(!b)return;const card=b.closest(".u"),id=card.dataset.id,r=admRows.find(x=>x.user_id===id);if(!r)return;const a=b.dataset.a;
-    if(a==="pw"){card.querySelector(".rp").classList.toggle("hide");card.querySelector(".rp input").focus();return}
-    if(a==="pwsave"){const p=card.querySelector(".rp input").value;if(p.length<6){$("#admMsg").textContent="Kata sandi baru minimal 6 karakter.";return}
-      const {data,error}=await sb.rpc("rt_admin_reset_password",{p_user:id,p_new_password:p});
-      $("#admMsg").textContent=error?"Gagal: "+error.message:data==="ok"?`Kata sandi @${r.username} diganti. Berikan kata sandi baru ini kepadanya.`:"Kata sandi terlalu pendek.";
-      if(!error)card.querySelector(".rp").classList.add("hide");return}
-    if(a==="approve"||a==="block"){const st=a==="approve"?"active":"blocked";const {data,error}=await sb.rpc("rt_admin_set_status",{p_user:id,p_status:st});
-      $("#admMsg").textContent=error?"Gagal: "+error.message:data==="ok"?(st==="active"?`@${r.username} disetujui dan sekarang bisa memakai Ruang Tenang.`:`@${r.username} dinonaktifkan. Datanya tetap tersimpan.`):"Tidak bisa mengubah akunmu sendiri.";
-      if(!error){loadAdmin(true);pendingBadge()}return}
-    if(a==="adm"){const {data,error}=await sb.rpc("rt_admin_set_admin",{p_user:id,p_value:!r.is_admin});
-      $("#admMsg").textContent=error?"Gagal: "+error.message:data==="ok"?`@${r.username} ${r.is_admin?"bukan admin lagi":"sekarang admin"}.`:"Tidak bisa mengubah akunmu sendiri.";if(!error)loadAdmin(true);return}
-    if(a==="del"){if(!b.classList.contains("sure")){b.classList.add("sure");b.textContent="Yakin hapus permanen?";setTimeout(()=>{if(b.isConnected){b.classList.remove("sure");b.textContent="Hapus akun"}},4000);return}
-      const {data,error}=await sb.rpc("rt_admin_delete_user",{p_user:id});
-      $("#admMsg").textContent=error?"Gagal: "+error.message:data==="ok"?`Akun @${r.username} dan seluruh catatannya dihapus.${r.files?` Hapus juga folder ${id} di menu Storage → rt-media untuk membersihkan ${r.files} file-nya.`:""}`:"Tidak bisa menghapus akunmu sendiri.";if(!error)loadAdmin(true)}
+  const STB={pending:["#FFF4E5","#c2691b","Menunggu"],active:["#E6FAF5","#0f9d7a","Aktif"],blocked:["#FFF1F3","#be123c","Dinonaktifkan"]};
+  function row(r){const me=r.user_id===session.user.id,m=STB[r.status]||["#F1F0F4","#666",r.status],pend=r.status==="pending",blk=r.status==="blocked";
+    return `<div class="np-row ${pend?"pend":""}" data-id="${r.user_id}"><div class="np-info">
+      <b>@${escA(r.username)}${r.is_admin?" 👑":""}${me?" (kamu)":""}</b>
+      <div class="np-badges"><span class="np-badge" style="background:${m[0]};color:${m[1]}">${m[2]}</span>${r.has_recovery?"":'<span class="np-badge" style="background:#F3F0FF;color:#6d28d9">Tanpa pertanyaan keamanan</span>'}</div>
+      <span class="np-meta">Daftar ${tgl(r.created_at)} · ${ago(r.last_seen)} · ${r.days_written} hari tercatat · ${r.files} file</span></div>
+      <div class="np-acts">${me?"":pend?'<button class="np-btn pri sm" data-a="approve">✓ Setujui</button><button class="np-btn danger sm" data-a="reject">Tolak</button>':blk?'<button class="np-btn pri sm" data-a="approve">Aktifkan</button>':'<button class="np-btn ghost sm" data-a="block" style="color:#be7b1b">⏸️ Nonaktifkan</button>'}
+      ${me?"":`<button class="np-btn ghost sm" data-a="pw" style="color:#7c3aed">🔑 Reset</button><button class="np-btn ghost sm" data-a="adm">${r.is_admin?"Cabut admin":"👑 Jadikan admin"}</button><button class="np-btn danger sm" data-a="del">🗑 Hapus</button>`}</div></div>`}
+  function renderAdmin(){
+    const box=$("#admList"),q=$("#admQ").value.trim().toLowerCase(),sort=$("#admSort").value;
+    if(!admRows.length){box.innerHTML='<p class="np-empty">Belum ada pengguna.</p>';return}
+    let list=admRows.filter(r=>!q||r.username.includes(q));
+    const S={new:(a,b)=>Date.parse(b.created_at)-Date.parse(a.created_at),old:(a,b)=>Date.parse(a.created_at)-Date.parse(b.created_at),name:(a,b)=>a.username.localeCompare(b.username),active:(a,b)=>(Date.parse(b.last_seen)||0)-(Date.parse(a.last_seen)||0)};
+    list.sort(S[sort]||S.new);
+    if(!list.length){box.innerHTML=`<p class="np-empty">Tidak ada pengguna cocok “${escA(q)}”.</p>`;return}
+    const pend=list.filter(r=>r.status==="pending"),oth=list.filter(r=>r.status!=="pending");
+    box.innerHTML=(pend.length?`<div class="np-h">Menunggu Persetujuan (${pend.length})</div>`+pend.map(row).join(""):"")+(oth.length?`<div class="np-h" style="margin-top:${pend.length?18:0}px">${q?"Hasil":"Semua Pengguna"} (${oth.length})</div>`+oth.map(row).join(""):"");
+  }
+  $("#admQ").oninput=renderAdmin;$("#admSort").onchange=renderAdmin;
+  async function setStatus(r,st){const {data,error}=await sb.rpc("rt_admin_set_status",{p_user:r.user_id,p_status:st});
+    if(error)return toast("Gagal: "+error.message);if(data!=="ok")return toast("Tidak bisa mengubah akunmu sendiri.");
+    toast(st==="active"?`@${r.username} disetujui ✓`:`@${r.username} ${r.status==="pending"?"ditolak":"dinonaktifkan"}`);loadAdmin(true)}
+  $("#admList").addEventListener("click",async e=>{const b=e.target.closest("button[data-a]");if(!b)return;const id=b.closest(".np-row").dataset.id,r=admRows.find(x=>x.user_id===id);if(!r)return;const a=b.dataset.a;
+    if(a==="approve")return setStatus(r,"active");
+    if(a==="reject"||a==="block")return setStatus(r,"blocked");
+    if(a==="adm"){const {data,error}=await sb.rpc("rt_admin_set_admin",{p_user:id,p_value:!r.is_admin});toast(error?"Gagal: "+error.message:data==="ok"?`@${r.username} ${r.is_admin?"bukan admin lagi":"sekarang admin 👑"}`:"Tidak bisa mengubah akunmu sendiri.");if(!error)loadAdmin(true);return}
+    if(a==="pw")return openModal("Reset Sandi",`<p>Buat kata sandi sementara untuk <b>@${escA(r.username)}</b>. Beri tahu sandi ini ke pemiliknya, lalu minta dia menggantinya sendiri.</p><div class="np-merr"></div><label>Kata sandi sementara</label><input type="text" id="rsP" autocomplete="off" spellcheck="false" placeholder="minimal 6 karakter"><button class="np-btn pri block" id="rsGo" data-id="${id}">Reset Sandi Sekarang</button>`);
+    if(a==="del")return openModal("Hapus Akun",`<p>Akun <b>@${escA(r.username)}</b> beserta ${r.days_written} hari catatannya akan dihapus permanen. Tindakan ini tidak bisa dibatalkan.</p><button class="np-btn danger block" id="delGo" data-id="${id}">🗑 Ya, hapus permanen</button><button class="np-btn ghost block" id="delNo">Batal</button>`);
   });
-
+  $("#npMB").addEventListener("click",async e=>{const t=e.target.closest("button");if(!t)return;
+    if(t.id==="delNo")return closeModal();
+    if(t.id==="rsGo"){const p=$("#rsP").value;if(p.length<6)return mErr("Kata sandi minimal 6 karakter.");t.disabled=true;
+      const r=admRows.find(x=>x.user_id===t.dataset.id);const {data,error}=await sb.rpc("rt_admin_reset_password",{p_user:t.dataset.id,p_new_password:p});
+      t.disabled=false;if(error||data!=="ok")return mErr(error?"Gagal: "+error.message:"Kata sandi terlalu pendek.");closeModal();toast(`Sandi @${r?r.username:""} direset 🔑`);return}
+    if(t.id==="delGo"){t.disabled=true;const r=admRows.find(x=>x.user_id===t.dataset.id);const {data,error}=await sb.rpc("rt_admin_delete_user",{p_user:t.dataset.id});
+      closeModal();if(error||data!=="ok")return toast(error?"Gagal: "+error.message:"Tidak bisa menghapus akunmu sendiri.");
+      toast(`@${r?r.username:""} dihapus${r&&r.files?`. Hapus juga folder ${r.user_id.slice(0,8)}… di Storage → rt-media`:""}`);loadAdmin(true);return}
+    if(t.id==="cpGo"){const a1=$("#cpA").value,a2=$("#cpB").value;if(a1.length<6)return mErr("Kata sandi minimal 6 karakter.");if(a1!==a2)return mErr("Kedua kata sandi tidak sama.");
+      t.disabled=true;const {error}=await sb.auth.updateUser({password:a1});t.disabled=false;if(error)return mErr("Gagal: "+error.message);closeModal();toast("Kata sandi admin diganti 🔑")}
+  });
+  // ---------- pengumuman global ----------
+  async function loadAnnounceEditor(){try{const {data}=await sb.from("rt_config").select("value").eq("key","announcement").maybeSingle();const v=(data&&data.value)||{};$("#annText").value=v.text||"";$("#annActive").checked=!!v.active}catch(e){}}
+  $("#annSave").onclick=async()=>{const text=$("#annText").value.trim(),active=$("#annActive").checked;
+    const {error}=await sb.from("rt_config").upsert({key:"announcement",value:{text,active},updated_at:new Date().toISOString()});
+    toast(error?(/relation|does not exist|schema cache|could not find/i.test(error.message)?"Jalankan dulu supabase-pengumuman.sql di Supabase.":"Gagal: "+error.message):active&&text?"Pengumuman aktif 📢":"Pengumuman disimpan")};
+  let annHidden=false;try{annHidden=sessionStorage.getItem("rt_ann_hide")||""}catch(e){}
+  async function loadAnnouncement(){
+    let bar=document.getElementById("announceBar");
+    if(!bar){const main=document.querySelector(".main");if(!main)return;bar=document.createElement("div");bar.id="announceBar";main.prepend(bar)}
+    try{const {data}=await sb.from("rt_config").select("value,updated_at").eq("key","announcement").maybeSingle();const v=(data&&data.value)||{};const sig=(data&&data.updated_at)||"";
+      bar.innerHTML=(v.active&&v.text&&annHidden!==sig)?`<div class="ann-bar"><span class="ic">📢</span><span class="msg">${escA(v.text)}</span><button aria-label="Tutup">✕</button></div>`:"";
+      const x=bar.querySelector("button");if(x)x.onclick=()=>{annHidden=sig;try{sessionStorage.setItem("rt_ann_hide",sig)}catch(e){}bar.innerHTML=""}}catch(e){bar.innerHTML=""}}
   // ---------- tanda tangan URL foto/audio (bucket privat) ----------
   function mediaIds(rows){const ids=new Set();rows.forEach(r=>{const d=r.data||{};(d.media||[]).forEach(m=>m&&m.id&&ids.add(m.id));if(d.songAsset&&d.songAsset.id)ids.add(d.songAsset.id)});return[...ids]}
   async function sign(ids){const need=ids.filter(id=>!urlCache[id]);if(!need.length)return;
