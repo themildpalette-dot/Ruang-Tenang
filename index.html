@@ -577,6 +577,13 @@ textarea,input[type=text],input[type=password],select{background:#fff!important;
 .adm .acts button,.adm .ah button{border:1.5px solid #f2cbd6;background:#fff;border-radius:999px;padding:6px 14px;font:inherit;font-size:13px;cursor:pointer;color:#3a2a35}
 .adm .acts button.danger{border-color:#f3b2c3;color:#b0213f}.adm .acts button.sure{background:#b0213f;color:#fff;border-color:#b0213f}
 .adm .rp{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}.adm .rp input{flex:1;min-width:160px;padding:7px 12px;border:1.5px solid #efd3dc;border-radius:999px;font:inherit}
+body.admin-mode .app,body.admin-mode .sosbtn,body.admin-mode .acct,body.admin-mode .lock,body.admin-mode .wz{display:none!important}
+.adm.full{background:linear-gradient(160deg,#fbe7ed,#fdf1f4 50%,#fbe8ee);padding:32px 18px 60px}
+.adm.full .ab{max-width:980px;box-shadow:0 14px 40px rgba(200,90,120,.12);border:1px solid #f6dde4}
+.adm .brand{font-family:Lora,serif;color:#a8385c;font-size:15px;font-weight:600;letter-spacing:.02em}
+.adm .who{font-size:13px;color:#7a6470}
+.adm .hb{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.adm .lastupd{font-size:12px;color:#a08894;margin-left:4px}
 .wait{position:fixed;inset:0;z-index:190;background:linear-gradient(160deg,#fbe7ed,#fdf1f4 50%,#fbe8ee);display:grid;place-items:center;padding:20px}
 .wait .box{max-width:400px;text-align:center;background:#fff;border:1px solid #f6dde4;border-radius:24px;padding:32px 26px;box-shadow:0 14px 34px rgba(200,90,120,.12)}
 .wait h2{font-family:Lora,serif;color:#9c2f55;font-size:26px;margin:10px 0 8px}.wait p{color:#7a6470;font-size:14.5px;line-height:1.6;margin:0 0 18px}
@@ -585,7 +592,7 @@ textarea,input[type=text],input[type=password],select{background:#fff!important;
 .adm .acts button.ok{background:linear-gradient(90deg,#e9637f,#f290a6);color:#fff;border-color:transparent}
 .adm .u.pend{border-color:#f2a7bd;background:#fff6f9}
 .adm .am2{font-size:13px;color:#8e2a4a;min-height:18px;margin-top:10px}
-@media (max-width:600px){.adm .as{grid-template-columns:repeat(2,1fr)}.adm .ab{padding:18px}}
+@media (max-width:600px){.adm .ah{flex-wrap:wrap;align-items:flex-start}.adm .ah h2{font-size:24px}.adm .as{grid-template-columns:repeat(2,1fr)}.adm .ab{padding:18px}}
 </style>
 <div class="auth hide" id="auth"><div class="box">
   <h2>Ruang Tenang</h2>
@@ -636,10 +643,10 @@ textarea,input[type=text],input[type=password],select{background:#fff!important;
 </div></div>
 <div class="acct" id="acct"><span id="acctEmail"></span><button class="adm-open hide" id="admOpen">🛡️ Admin</button><button id="logoutBtn">Keluar</button></div>
 <div class="adm hide" id="adm"><div class="ab">
-  <div class="ah"><h2>Admin</h2><button id="admX">Tutup</button></div>
+  <div class="ah"><div><div class="brand">Ruang Tenang</div><h2>Konsol Admin</h2></div><div class="hb"><span class="who" id="admWho"></span><button id="admRefresh">↻ Muat ulang</button><button id="admX">Tutup</button><button id="admOut" class="hide">Keluar</button></div></div>
   <p class="an">Setujui akun baru sebelum bisa dipakai. Admin hanya mengelola akun, isi jurnal pengguna tetap privat dan tidak bisa dibaca dari sini.</p>
   <div class="as" id="admStats"></div>
-  <input class="q" id="admQ" placeholder="Cari username…">
+  <input class="q" id="admQ" placeholder="Cari username…"><div class="lastupd" id="admLU"></div>
   <div id="admList"></div>
   <p class="am2" id="admMsg"></p>
 </div></div>
@@ -733,7 +740,8 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
   async function gate(){
     let st;try{st=await myStatus()}catch(e){console.warn("status",e);st={status:"active",is_admin:false,unknown:true}}
     isAdm=!!st.is_admin;
-    if(st.status==="active"||isAdm){$("#wait").classList.add("hide");document.body.style.overflow="";clearInterval(waitT);
+    if(isAdm){openConsole();return}
+    if(st.status==="active"){$("#wait").classList.add("hide");document.body.style.overflow="";clearInterval(waitT);
       if(!opened){opened=true;readyResolve(session)}
       try{await sb.rpc("rt_touch")}catch(e){}
       if(isAdm){$("#admOpen").classList.remove("hide");pendingBadge()}
@@ -744,6 +752,18 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     $("#wait").classList.remove("hide");document.body.style.overflow="hidden";
     clearInterval(waitT);if(!blocked)waitT=setInterval(gate,20000);
   }
+  let consoleT=null;
+  function openConsole(){
+    $("#wait").classList.add("hide");$("#auth").classList.add("hide");
+    document.body.classList.add("admin-mode");document.body.style.overflow="";
+    $("#adm").classList.add("full");$("#adm").classList.remove("hide");
+    $("#admX").classList.add("hide");$("#admOut").classList.remove("hide");
+    $("#admWho").textContent="@"+uname(session);document.title="Konsol Admin · Ruang Tenang";
+    sb.rpc("rt_touch").then(()=>{},()=>{});
+    loadAdmin();clearInterval(consoleT);consoleT=setInterval(()=>{if(!document.hidden)loadAdmin(true)},30000);
+  }
+  $("#admOut").onclick=async()=>{await sb.auth.signOut();location.reload()};
+  $("#admRefresh").onclick=()=>loadAdmin();
   $("#waitCheck").onclick=()=>{$("#waitCheck").textContent="Memeriksa…";gate().finally(()=>setTimeout(()=>$("#waitCheck").textContent="Cek lagi",600))};
   $("#waitOut").onclick=async()=>{await sb.auth.signOut();location.reload()};
   async function pendingBadge(){try{const {data}=await sb.rpc("rt_admin_users");const n=(data||[]).filter(r=>r.status==="pending").length;$("#admOpen").textContent="🛡️ Admin"+(n?" · "+n+" baru":"")}catch(e){}}
@@ -754,7 +774,8 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
   async function loadAdmin(keep){if(!keep)$("#admMsg").textContent="Memuat…";
     const {data,error}=await sb.rpc("rt_admin_users");
     if(error){$("#admMsg").textContent="Gagal memuat: "+error.message;return}
-    admRows=data||[];if(!keep)$("#admMsg").textContent="";renderAdmin()}
+    admRows=data||[];if(!keep)$("#admMsg").textContent="";renderAdmin();
+    const lu=document.getElementById("admLU");if(lu)lu.textContent="diperbarui "+new Date().toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}
   function renderAdmin(){
     const wk=Date.now()-7*864e5,me=session.user.id;
     $("#admStats").innerHTML=`<div><b>${admRows.filter(r=>r.status==="pending").length}</b><span>menunggu persetujuan</span></div><div><b>${admRows.length}</b><span>pengguna</span></div><div><b>${admRows.filter(r=>r.last_seen&&Date.parse(r.last_seen)>wk).length}</b><span>aktif 7 hari</span></div><div><b>${admRows.filter(r=>r.status==="blocked").length}</b><span>dinonaktifkan</span></div>`;
