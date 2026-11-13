@@ -841,7 +841,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     loadAdmin();loadAnnounceEditor();clearInterval(consoleT);consoleT=setInterval(()=>{if(!document.hidden)loadAdmin(true)},30000);
   }
   $("#admOut").onclick=async()=>{await sb.auth.signOut();location.reload()};
-  $("#admRefresh").onclick=()=>{loadAdmin();toast("Daftar diperbarui")};
+  $("#admRefresh").onclick=()=>{loadAdmin();toast("Memuat ulang…")};
   $("#admPass").onclick=()=>openModal("Ganti Kata Sandi",`<p>Ganti kata sandi akun admin <b>@${escA(uname(session))}</b>.</p><div class="np-merr"></div><label>Kata sandi baru</label><input type="password" id="cpA" autocomplete="new-password" placeholder="minimal 6 karakter"><label>Ulangi kata sandi baru</label><input type="password" id="cpB" autocomplete="new-password"><button class="np-btn pri block" id="cpGo">Simpan Kata Sandi</button>`);
   $("#waitCheck").onclick=()=>{$("#waitCheck").textContent="Memeriksa…";gate().finally(()=>setTimeout(()=>$("#waitCheck").textContent="Cek lagi",600))};
   $("#waitOut").onclick=async()=>{await sb.auth.signOut();location.reload()};
@@ -851,7 +851,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
   const escA=x=>String(x==null?"":x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   async function loadAdmin(quiet){
     const {data,error}=await sb.rpc("rt_admin_users");
-    if(error){$("#admList").innerHTML='<p class="np-empty">Gagal memuat. Pastikan SQL admin sudah dijalankan di Supabase.</p>';return}
+    if(error){console.error("rt_admin_users",error);$("#admList").innerHTML=`<p class="np-empty">Gagal memuat daftar pengguna.<br><span style="font-size:12px;color:#be123c">${escA(error.message||"")}${error.code?" ("+escA(error.code)+")":""}</span><br><span style="font-size:12px">Jalankan supabase-perbaikan-admin.sql di Supabase, lalu muat ulang.</span></p>`;return}
     admRows=data||[];
     const n=k=>admRows.filter(r=>r.status===k).length;
     const st=(l,v,c)=>`<div class="np-stat" style="--c:var(--${c})"><b>${v}</b><span>${l}</span></div>`;
