@@ -577,6 +577,13 @@ textarea,input[type=text],input[type=password],select{background:#fff!important;
 .adm .acts button,.adm .ah button{border:1.5px solid #f2cbd6;background:#fff;border-radius:999px;padding:6px 14px;font:inherit;font-size:13px;cursor:pointer;color:#3a2a35}
 .adm .acts button.danger{border-color:#f3b2c3;color:#b0213f}.adm .acts button.sure{background:#b0213f;color:#fff;border-color:#b0213f}
 .adm .rp{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}.adm .rp input{flex:1;min-width:160px;padding:7px 12px;border:1.5px solid #efd3dc;border-radius:999px;font:inherit}
+.wait{position:fixed;inset:0;z-index:190;background:linear-gradient(160deg,#fbe7ed,#fdf1f4 50%,#fbe8ee);display:grid;place-items:center;padding:20px}
+.wait .box{max-width:400px;text-align:center;background:#fff;border:1px solid #f6dde4;border-radius:24px;padding:32px 26px;box-shadow:0 14px 34px rgba(200,90,120,.12)}
+.wait h2{font-family:Lora,serif;color:#9c2f55;font-size:26px;margin:10px 0 8px}.wait p{color:#7a6470;font-size:14.5px;line-height:1.6;margin:0 0 18px}
+.wait .row2{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.wait .ghost2{border:1.5px solid #f2cbd6;background:#fff;border-radius:999px;padding:11px 22px;font:inherit;cursor:pointer;color:#3a2a35}
+.adm .acts button.ok{background:linear-gradient(90deg,#e9637f,#f290a6);color:#fff;border-color:transparent}
+.adm .u.pend{border-color:#f2a7bd;background:#fff6f9}
 .adm .am2{font-size:13px;color:#8e2a4a;min-height:18px;margin-top:10px}
 @media (max-width:600px){.adm .as{grid-template-columns:repeat(2,1fr)}.adm .ab{padding:18px}}
 </style>
@@ -621,10 +628,16 @@ textarea,input[type=text],input[type=password],select{background:#fff!important;
   </form>
   <p class="am" id="authMsg"></p>
 </div></div>
+<div class="wait hide" id="wait"><div class="box">
+  <div style="font-size:40px" id="waitIc">⏳</div>
+  <h2 id="waitT">Menunggu persetujuan</h2>
+  <p id="waitP">Akunmu sudah terdaftar. Admin perlu menyetujuinya dulu sebelum kamu bisa mulai menulis. Halaman ini akan terbuka otomatis setelah disetujui.</p>
+  <div class="row2"><button class="btn" id="waitCheck">Cek lagi</button><button class="ghost2" id="waitOut">Keluar</button></div>
+</div></div>
 <div class="acct" id="acct"><span id="acctEmail"></span><button class="adm-open hide" id="admOpen">🛡️ Admin</button><button id="logoutBtn">Keluar</button></div>
 <div class="adm hide" id="adm"><div class="ab">
   <div class="ah"><h2>Admin</h2><button id="admX">Tutup</button></div>
-  <p class="an">Admin hanya mengelola akun. Isi jurnal pengguna tetap privat dan tidak bisa dibaca dari sini.</p>
+  <p class="an">Setujui akun baru sebelum bisa dipakai. Admin hanya mengelola akun, isi jurnal pengguna tetap privat dan tidak bisa dibaca dari sini.</p>
   <div class="as" id="admStats"></div>
   <input class="q" id="admQ" placeholder="Cari username…">
   <div id="admList"></div>
@@ -706,17 +719,35 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
   }else{
     sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
     sb.auth.onAuthStateChange((_ev,s)=>{
-      if(s&&!session){session=s;hideAuth();$("#acctEmail").textContent="@"+uname(s);readyResolve(s);afterLogin()}
+      if(s&&!session){session=s;hideAuth();$("#acctEmail").textContent="@"+uname(s);gate()}
       else if(!s&&session){location.reload()}
     });
-    sb.auth.getSession().then(({data})=>{if(data.session){if(!session){session=data.session;hideAuth();$("#acctEmail").textContent="@"+uname(session);readyResolve(session);afterLogin()}}else showAuth()});
+    sb.auth.getSession().then(({data})=>{if(data.session){if(!session){session=data.session;hideAuth();$("#acctEmail").textContent="@"+uname(session);gate()}}else showAuth()});
   }
 
 
   // ---------- admin ----------
   let admRows=[];
-  async function afterLogin(){try{await sb.rpc("rt_touch")}catch(e){}
-    try{const {data}=await sb.rpc("rt_is_admin");if(data===true)$("#admOpen").classList.remove("hide")}catch(e){}}
+  let opened=false,waitT=null,isAdm=false;
+  async function myStatus(){const {data,error}=await sb.rpc("rt_my_status");if(error)throw error;const r=Array.isArray(data)?data[0]:data;return r||{status:"pending",is_admin:false}}
+  async function gate(){
+    let st;try{st=await myStatus()}catch(e){console.warn("status",e);st={status:"active",is_admin:false,unknown:true}}
+    isAdm=!!st.is_admin;
+    if(st.status==="active"||isAdm){$("#wait").classList.add("hide");document.body.style.overflow="";clearInterval(waitT);
+      if(!opened){opened=true;readyResolve(session)}
+      try{await sb.rpc("rt_touch")}catch(e){}
+      if(isAdm){$("#admOpen").classList.remove("hide");pendingBadge()}
+      return}
+    const blocked=st.status==="blocked";
+    $("#waitIc").textContent=blocked?"🔒":"⏳";$("#waitT").textContent=blocked?"Akun dinonaktifkan":"Menunggu persetujuan";
+    $("#waitP").textContent=blocked?"Akunmu sedang dinonaktifkan oleh admin. Hubungi admin kalau menurutmu ini keliru.":"Akunmu @"+uname(session)+" sudah terdaftar. Admin perlu menyetujuinya dulu sebelum kamu bisa mulai menulis. Halaman ini terbuka otomatis setelah disetujui.";
+    $("#wait").classList.remove("hide");document.body.style.overflow="hidden";
+    clearInterval(waitT);if(!blocked)waitT=setInterval(gate,20000);
+  }
+  $("#waitCheck").onclick=()=>{$("#waitCheck").textContent="Memeriksa…";gate().finally(()=>setTimeout(()=>$("#waitCheck").textContent="Cek lagi",600))};
+  $("#waitOut").onclick=async()=>{await sb.auth.signOut();location.reload()};
+  async function pendingBadge(){try{const {data}=await sb.rpc("rt_admin_users");const n=(data||[]).filter(r=>r.status==="pending").length;$("#admOpen").textContent="🛡️ Admin"+(n?" · "+n+" baru":"")}catch(e){}}
+  setInterval(()=>{if(isAdm&&!document.hidden)pendingBadge()},60000);
   const ago=t=>{if(!t)return"belum pernah";const m=Math.round((Date.now()-Date.parse(t))/60000);return m<2?"baru saja":m<60?m+" menit lalu":m<1440?Math.round(m/60)+" jam lalu":Math.round(m/1440)+" hari lalu"};
   const tgl=t=>new Date(t).toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"});
   const escA=x=>String(x==null?"":x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -726,13 +757,13 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     admRows=data||[];if(!keep)$("#admMsg").textContent="";renderAdmin()}
   function renderAdmin(){
     const wk=Date.now()-7*864e5,me=session.user.id;
-    $("#admStats").innerHTML=`<div><b>${admRows.length}</b><span>pengguna</span></div><div><b>${admRows.filter(r=>r.last_seen&&Date.parse(r.last_seen)>wk).length}</b><span>aktif 7 hari</span></div><div><b>${admRows.reduce((a,r)=>a+(r.days_written||0),0)}</b><span>hari tercatat</span></div><div><b>${admRows.filter(r=>r.is_admin).length}</b><span>admin</span></div>`;
+    $("#admStats").innerHTML=`<div><b>${admRows.filter(r=>r.status==="pending").length}</b><span>menunggu persetujuan</span></div><div><b>${admRows.length}</b><span>pengguna</span></div><div><b>${admRows.filter(r=>r.last_seen&&Date.parse(r.last_seen)>wk).length}</b><span>aktif 7 hari</span></div><div><b>${admRows.filter(r=>r.status==="blocked").length}</b><span>dinonaktifkan</span></div>`;
     const q=$("#admQ").value.trim().toLowerCase();
     const rows=admRows.filter(r=>!q||r.username.includes(q));
-    $("#admList").innerHTML=rows.map(r=>{const self=r.user_id===me;return `<div class="u" data-id="${r.user_id}">
-      <div class="t"><b>@${escA(r.username)}</b>${r.is_admin?'<span class="bdg">admin</span>':""}${self?'<span class="bdg g">kamu</span>':""}${r.has_recovery?"":'<span class="bdg w">tanpa pertanyaan keamanan</span>'}</div>
+    $("#admList").innerHTML=rows.map(r=>{const self=r.user_id===me;const pend=r.status==="pending",blk=r.status==="blocked";return `<div class="u ${pend?"pend":""}" data-id="${r.user_id}">
+      <div class="t"><b>@${escA(r.username)}</b>${pend?'<span class="bdg">menunggu persetujuan</span>':""}${blk?'<span class="bdg w">dinonaktifkan</span>':""}${r.is_admin?'<span class="bdg">admin</span>':""}${self?'<span class="bdg g">kamu</span>':""}${r.has_recovery?"":'<span class="bdg w">tanpa pertanyaan keamanan</span>'}</div>
       <div class="meta">Daftar ${tgl(r.created_at)} · aktif ${ago(r.last_seen)} · ${r.days_written} hari tercatat · ${r.files} file</div>
-      <div class="acts"><button data-a="pw">🔑 Reset kata sandi</button>${self?"":`<button data-a="adm">${r.is_admin?"Cabut admin":"Jadikan admin"}</button><button data-a="del" class="danger">Hapus akun</button>`}</div>
+      <div class="acts">${self?"":pend?'<button data-a="approve" class="ok">✓ Setujui</button>':blk?'<button data-a="approve">Aktifkan lagi</button>':'<button data-a="block">Nonaktifkan</button>'}<button data-a="pw">🔑 Reset kata sandi</button>${self?"":`<button data-a="adm">${r.is_admin?"Cabut admin":"Jadikan admin"}</button><button data-a="del" class="danger">Hapus akun</button>`}</div>
       <div class="rp hide"><input type="text" placeholder="Kata sandi baru (min. 6)" autocomplete="off"><button data-a="pwsave">Simpan</button></div></div>`}).join("")||'<p class="an">Tidak ada pengguna yang cocok.</p>';
   }
   $("#admOpen").onclick=()=>{$("#adm").classList.remove("hide");document.body.style.overflow="hidden";loadAdmin()};
@@ -744,6 +775,9 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
       const {data,error}=await sb.rpc("rt_admin_reset_password",{p_user:id,p_new_password:p});
       $("#admMsg").textContent=error?"Gagal: "+error.message:data==="ok"?`Kata sandi @${r.username} diganti. Berikan kata sandi baru ini kepadanya.`:"Kata sandi terlalu pendek.";
       if(!error)card.querySelector(".rp").classList.add("hide");return}
+    if(a==="approve"||a==="block"){const st=a==="approve"?"active":"blocked";const {data,error}=await sb.rpc("rt_admin_set_status",{p_user:id,p_status:st});
+      $("#admMsg").textContent=error?"Gagal: "+error.message:data==="ok"?(st==="active"?`@${r.username} disetujui dan sekarang bisa memakai Ruang Tenang.`:`@${r.username} dinonaktifkan. Datanya tetap tersimpan.`):"Tidak bisa mengubah akunmu sendiri.";
+      if(!error){loadAdmin(true);pendingBadge()}return}
     if(a==="adm"){const {data,error}=await sb.rpc("rt_admin_set_admin",{p_user:id,p_value:!r.is_admin});
       $("#admMsg").textContent=error?"Gagal: "+error.message:data==="ok"?`@${r.username} ${r.is_admin?"bukan admin lagi":"sekarang admin"}.`:"Tidak bisa mengubah akunmu sendiri.";if(!error)loadAdmin(true);return}
     if(a==="del"){if(!b.classList.contains("sure")){b.classList.add("sure");b.textContent="Yakin hapus permanen?";setTimeout(()=>{if(b.isConnected){b.classList.remove("sure");b.textContent="Hapus akun"}},4000);return}
