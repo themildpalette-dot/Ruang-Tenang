@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ruang Tenang</title>
-<meta name="theme-color" content="#f6c9d6">
+<title>Ruang Tenang — Jurnal Harian</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -320,6 +319,47 @@ textarea,input[type=text],input[type=password],select{background:#fff!important;
   .moods{gap:6px}.moods button span{font-size:26px}.moods button small{font-size:11.5px}
   .jpanel{padding:16px 14px}
 }
+
+/* tema: ilustrasi ikut berganti warna */
+.hills,.qcard img{filter:hue-rotate(var(--img-hue,0deg)) saturate(var(--img-sat,1)) brightness(var(--img-bri,1))}
+.hero .art{filter:saturate(var(--hero-sat,1)) brightness(var(--img-bri,1))}
+html.dark{color-scheme:dark}html.dark .hero .art{opacity:.55}html.dark .hills{opacity:.14}html.dark .qcard img{opacity:.55}
+.ribbon{filter:hue-rotate(var(--img-hue,0deg)) saturate(var(--img-sat,1)) brightness(var(--img-bri,1)) drop-shadow(0 6px 10px rgba(226,73,111,.18))!important}
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px;margin-top:8px}
+.themes button{border:1.5px solid #f2d3dc;background:#fff;border-radius:16px;padding:12px 8px 10px;cursor:pointer;font:inherit;font-size:13.5px;color:#3a2a35;display:flex;flex-direction:column;align-items:center;gap:8px;transition:.15s}
+.themes button i{width:38px;height:38px;border-radius:50%;display:block;box-shadow:inset 0 0 0 3px #fff,0 2px 8px rgba(0,0,0,.12)}
+.themes button.on{border-color:#e9637f;box-shadow:0 0 0 2px #e9637f;font-weight:600}
+.themes button:hover{transform:translateY(-2px)}
+
+.ach{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:12px}
+.ach>div{border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center;background:var(--card)}
+.ach>div.got{background:var(--sage-l);border-color:transparent}
+.ach .bi{font-size:28px;line-height:1.1}.ach>div:not(.got) .bi{filter:grayscale(1);opacity:.45}
+.ach b{display:block;font-size:13.5px;margin-top:6px}.ach span{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
+.ach .pg{height:5px;border-radius:5px;background:var(--line);margin-top:8px;overflow:hidden}.ach .pg i{display:block;height:100%;background:linear-gradient(90deg,#f0466e,#ff8fb8)}
+.hm{display:grid;grid-template-columns:44px repeat(4,1fr);gap:4px;margin-top:12px;font-size:12px}
+.hm span{color:var(--muted);display:flex;align-items:center;justify-content:center}.hm span.l{justify-content:flex-start}
+.hm i{display:flex;align-items:center;justify-content:center;height:34px;border-radius:9px;font-style:normal;font-weight:600;font-size:12.5px;background:var(--line)}
+.tt{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}.tt th{font-size:11.5px;color:var(--muted);font-weight:600;text-align:left;padding:6px 4px;border-bottom:1px solid var(--line)}.tt td{padding:8px 4px;border-bottom:1px solid var(--line)}.tt td.n{text-align:right;white-space:nowrap}.tt th.n{text-align:right}
+.wkb{display:flex;align-items:flex-end;gap:4px;height:70px;margin-top:10px}.wkb div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}.wkb i{width:100%;max-width:22px;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,#ff8fb8,#f0466e);min-height:2px}.wkb small{font-size:10px;color:var(--muted);margin-top:3px}
+.locked{position:relative;border:1px dashed var(--line);border-radius:14px;padding:16px;text-align:center;margin-top:10px}
+.locked b{display:block;margin-bottom:4px}
+.lk{font-size:11px;padding:1px 7px;border-radius:999px;background:#fff4d6;color:#a86a00;margin-left:4px;white-space:nowrap;font-weight:600}
+.ifi{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;font-size:14px}.ifi .t{font-size:12px;color:var(--muted)}.ifi p{margin:4px 0 0;white-space:pre-wrap}
+.ifform{border-top:1px solid var(--line);padding-top:12px;margin-top:6px}
+.ifbox{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-top:14px;text-align:left;font-size:14px}.ifbox b{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}.ifbox div{padding:6px 0;border-top:1px solid var(--line)}.ifbox div:first-of-type{border-top:0}
+.medl{display:grid;gap:8px}.medl button{display:flex;align-items:center;gap:12px;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 14px;font:inherit;color:var(--ink);cursor:pointer}
+.medl button .e{font-size:24px}.medl button b{display:block;font-size:14.5px}.medl button small{color:var(--muted);font-size:12.5px}.medl button .m{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+.med{position:fixed;inset:0;z-index:65;background:linear-gradient(160deg,#ffd6e0,#fff0f5);overflow-y:auto;padding:24px 18px}
+.med .mbox{max-width:520px;margin:0 auto;text-align:center;min-height:calc(100vh - 48px);display:flex;flex-direction:column;justify-content:center}
+.med .close{position:absolute;top:18px;right:18px;border:0;background:#fff;color:var(--sage-d);border-radius:999px;padding:6px 14px;font:inherit;font-size:13px;cursor:pointer}
+.med .mt{font-family:Lora,serif;font-size:18px;margin:0;color:var(--muted)}
+.med .mcue{font-family:Lora,serif;font-size:22px;line-height:1.5;min-height:100px;margin:4px 8px 18px;transition:opacity .9s}
+.med .mcue.fade{opacity:0}
+.mbar{height:6px;border-radius:6px;background:rgba(255,255,255,.7);overflow:hidden;margin:0 30px}.mbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f0466e,#ff8fb8);transition:width 1s linear}
+.worb.mo{animation-duration:10s;margin:48px auto 44px}.med.paused .worb{animation-play-state:paused}
+.rtoast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:var(--ink);color:var(--card);padding:12px 18px;border-radius:14px;font-size:14px;z-index:80;opacity:0;pointer-events:none;transition:.35s;max-width:90vw;text-align:center}
+.rtoast.on{opacity:1;transform:translate(-50%,0)}
 </style>
 </head>
 <body>
@@ -429,6 +469,11 @@ textarea,input[type=text],input[type=password],select{background:#fff!important;
 
   <!-- CALM -->
   <section id="v-calm" class="hide">
+    <div class="card" id="themeCard">
+      <h2 style="font-size:20px;margin-bottom:6px">🎨 Tema Warna</h2>
+      <p class="help" style="margin-top:0">Pilih warna yang paling menenangkan untukmu. Tersimpan di akunmu dan ikut di semua perangkat.</p>
+      <div class="themes" id="themes"></div>
+    </div>
     <div class="card">
       <h2 style="font-size:20px;margin-bottom:6px">Rencana Jedaku</h2>
       <p class="help" style="margin-top:0">Tulis saat kamu sedang tenang. Isinya akan muncul di layar jeda ketika emosimu naik.</p>
@@ -436,6 +481,17 @@ textarea,input[type=text],input[type=password],select{background:#fff!important;
       <div class="q"><label>Yang biasanya membantuku tenang<em>Contoh: keluar ruangan 10 menit, jalan kaki, minum air, menunda membalas chat</em></label><textarea data-p="helps" style="min-height:60px"></textarea></div>
       <div class="q"><label>Kalimat untuk diriku sendiri<em>Contoh: "Aku boleh marah, tapi aku tidak harus bereaksi sekarang."</em></label><textarea data-p="words" style="min-height:60px"></textarea></div>
       <div class="q"><label>Orang yang bisa kuhubungi saat butuh teman bicara</label><textarea data-p="people" style="min-height:44px"></textarea></div>
+    </div>
+    <div class="card" id="ifCard">
+      <h2 style="font-size:20px;margin-bottom:6px">🧭 Rencana Kalau–Maka</h2>
+      <p class="help" style="margin-top:0">Siapkan jawabanmu sekarang, selagi tenang. Saat kamu menekan <b>Aku lagi emosi</b> dan memilih pemicu yang sama, rencana ini muncul di layar jeda.</p>
+      <div id="ifList"></div>
+      <div class="ifform">
+        <div class="q"><label>Pemicunya</label><select id="ifTrig" style="width:100%"></select></div>
+        <div class="q"><label>Kalau… <em>Contoh: "atasan mengkritikku di depan orang lain"</em></label><input type="text" id="ifWhen" maxlength="160" style="width:100%" placeholder="Kalau…"></div>
+        <div class="q"><label>Maka aku akan… <em>Contoh: "diam 10 detik, bilang 'aku catat dulu ya', lalu bahas berdua setelah rapat"</em></label><textarea id="ifThen" maxlength="400" style="min-height:70px" placeholder="Maka aku akan…"></textarea></div>
+        <div class="row"><button class="btn" id="ifAdd">➕ Simpan rencana</button><span class="help" id="ifMsg"></span></div>
+      </div>
     </div>
     <div class="card">
       <h2 style="font-size:20px;margin-bottom:6px">💌 Surat untuk diriku saat marah</h2>
@@ -462,6 +518,13 @@ textarea,input[type=text],input[type=password],select{background:#fff!important;
       <div class="phase" id="phase">Siap kapan pun kamu siap</div>
       <div class="count" id="count"></div>
       <div class="row" style="justify-content:center;margin-top:14px"><button class="btn" id="bBtn">Mulai</button></div>
+    </div>
+    <div class="card" id="medCard">
+      <h2 style="font-size:20px;margin-bottom:6px">🪷 Meditasi Terpandu</h2>
+      <p class="help" style="margin-top:0">Ikuti kalimat yang muncul pelan-pelan. Boleh sambil memejamkan mata di sela-selanya.</p>
+      <div class="medl" id="medList"></div>
+      <div class="ci-row" style="margin-top:12px"><span class="help">Suara latar</span><select id="medSnd"><option value="">Hening</option><option value="rain">🌧️ Hujan</option><option value="waves" selected>🌊 Ombak</option><option value="forest">🌳 Hutan</option><option value="song">🎵 Laguku</option></select></div>
+      <p class="help" id="medStat" style="margin-bottom:0"></p>
     </div>
     <div class="card ground">
       <h2 style="font-size:20px;margin-bottom:6px">Grounding 5-4-3-2-1</h2>
@@ -490,6 +553,10 @@ textarea,input[type=text],input[type=password],select{background:#fff!important;
       <div class="stat"><b id="sStreak">0</b><span>hari berturut</span></div>
       <div class="stat"><b id="sAvg">–</b><span>rata-rata 14 hari</span></div>
     </div>
+    <div class="card" id="achCard">
+      <div class="row" style="justify-content:space-between;align-items:baseline"><p class="label" style="margin:0">🏅 Pencapaian</p><span class="help" id="achSum"></span></div>
+      <div class="ach" id="ach"></div>
+    </div>
     <div class="card wk" id="wkCard">
       <div class="row" style="justify-content:space-between"><p class="label" style="margin:0">Rangkuman mingguan</p><div class="seg" id="wkSeg"><button data-w="0" class="on">Minggu ini</button><button data-w="1">Minggu lalu</button></div></div>
       <div id="wk"></div>
@@ -497,6 +564,10 @@ textarea,input[type=text],input[type=password],select{background:#fff!important;
     <div class="card" id="insCard">
       <p class="label">Pola emosimu · 30 hari terakhir</p>
       <div id="ins"></div>
+    </div>
+    <div class="card" id="mapCard">
+      <div class="row" style="justify-content:space-between"><p class="label" style="margin:0">🗺️ Peta Pemicu</p><div class="seg" id="mapSeg"><button data-r="30" class="on">30 hari</button><button data-r="90">90 hari</button><button data-r="all">Semua</button></div></div>
+      <div id="map"></div>
     </div>
     <div class="card">
       <p class="label">Suasana hati 14 hari terakhir</p>
@@ -541,6 +612,8 @@ textarea,input[type=text],input[type=password],select{background:#fff!important;
 <button class="sosbtn" data-wz="sos">🔥 Aku lagi emosi</button>
 <div class="wz hide" id="wz"><div class="box"><div class="card" id="wzc"></div></div></div>
 <div class="lb hide" id="lb"><button id="lbX" aria-label="Tutup">✕</button><div id="lbIn"></div></div>
+<div class="med hide" id="med"><div class="mbox"><button class="close" id="medX">Selesai</button><p class="mt" id="medT"></p><div class="worb mo" id="medOrb"></div><p class="mcue" id="medCue"></p><div class="mbar"><i id="medBar"></i></div><p class="help" id="medLeft"></p><div class="row" style="justify-content:center"><button class="btn ghost" id="medPause">⏸️ Jeda</button></div></div></div>
+<div class="rtoast" id="rtToast"></div>
 
 <!-- ===== Ruang Tenang · versi GitHub + Supabase ===== -->
 <style>
@@ -639,6 +712,11 @@ body.admin-mode .app,body.admin-mode .sosbtn,body.admin-mode .acct,body.admin-mo
 .np-merr{display:none;background:#fff1f3;color:#be123c;border:1px solid #fbd5dc;border-radius:10px;padding:9px 12px;font-size:12.5px;margin-bottom:12px}
 .np-toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:#3a2033;color:#fff;padding:11px 18px;border-radius:12px;font:600 13.5px "Plus Jakarta Sans",system-ui,sans-serif;opacity:0;pointer-events:none;transition:.25s;z-index:300;max-width:90vw;text-align:center}
 .np-toast.on{opacity:1;transform:translate(-50%,0)}
+.fb-item{padding:12px 14px;background:#fdf3f6;border:1px solid var(--line);border-radius:11px;margin-bottom:8px}
+.fb-item.done{opacity:.6}
+.fb-item .fh{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.fb-item .fh b{font-size:13.5px}.fb-item .fm{font-size:13.5px;white-space:pre-wrap;line-height:1.5;margin:0 0 8px}
+.fb-item .fa{display:flex;gap:6px;flex-wrap:wrap}
 .ann-bar{display:flex;align-items:center;gap:11px;margin:0 0 18px;padding:13px 15px;background:#3a2033;border-left:5px solid #f290a6;border-radius:13px;color:#fff;box-shadow:0 8px 22px rgba(58,32,51,.25);font-family:"Plus Jakarta Sans",system-ui,sans-serif}
 .ann-bar .ic{font-size:18px}.ann-bar .msg{flex:1;font-size:13.5px;line-height:1.45;font-weight:600;white-space:pre-wrap}
 .ann-bar button{border:0;background:rgba(255,255,255,.16);color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;flex:none}
@@ -652,6 +730,21 @@ body.admin-mode .app,body.admin-mode .sosbtn,body.admin-mode .acct,body.admin-mo
 .adm .u.pend{border-color:#f2a7bd;background:#fff6f9}
 .adm .am2{font-size:13px;color:#8e2a4a;min-height:18px;margin-top:10px}
 @media (max-width:600px){.adm .ah{flex-wrap:wrap;align-items:flex-start}.adm .ah h2{font-size:24px}.adm .as{grid-template-columns:repeat(2,1fr)}.adm .ab{padding:18px}}
+.np-modal,.np-toast{--rose:#e9637f;--coral:#f290a6;--ink:#3a2033;--soft:#7a6470;--line:#f3dbe3}
+.np-mbox{max-height:92vh;overflow-y:auto}
+#npMB select{width:100%;border:1px solid #f3dbe3;border-radius:11px;padding:10px 12px;font:inherit;font-size:14px;margin-bottom:10px;background:#fff;color:#3a2033}
+#npMB input[type=file]{padding:8px;font-size:12.5px}
+.pl-ben{margin:0 0 14px;padding:0;list-style:none;font-size:13.5px;line-height:1.5}.pl-ben li{padding:3px 0}.pl-ben li:before{content:"✓ ";color:#0f9d7a;font-weight:700}
+.pl-opts{display:grid;gap:8px;margin-bottom:12px}
+#npMB .pl-opt{display:flex;align-items:center;gap:10px;border:1px solid #f3dbe3;border-radius:12px;padding:10px 12px;cursor:pointer;margin:0;font-size:13.5px;color:#3a2033;font-weight:600}
+#npMB .pl-opt input{width:auto;margin:0;accent-color:#e8365d}#npMB .pl-opt span{margin-left:auto;font-weight:700;color:#e8365d}
+#npMB .pl-opt:has(input:checked){border-color:#e8365d;background:#fff5f8}
+.pl-info{white-space:pre-wrap;background:#fdf3f6;border:1px dashed #f3c4d3;border-radius:12px;padding:10px 12px;font-size:13.5px;margin-bottom:12px;color:#3a2033;line-height:1.55}
+.pl-or{text-align:center;font-size:12px;color:#a08a95;margin:10px 0 12px}
+.pl-st{font-size:14px;line-height:1.55}.pl-st b{color:inherit}
+.pay-item{padding:12px 14px;background:#fdf3f6;border:1px solid var(--line);border-radius:11px;margin-bottom:8px}
+.pay-item.pend{background:#fff8ef;border-color:#f6dcc0}.pay-item .ph{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.pay-item .ph b{font-size:14px}.pay-item .pm{font-size:13px;color:#7a6470;margin:0 0 8px;line-height:1.5}
 </style>
 <div class="auth hide" id="auth"><div class="box">
   <h2>Ruang Tenang</h2>
@@ -715,6 +808,18 @@ body.admin-mode .app,body.admin-mode .sosbtn,body.admin-mode .acct,body.admin-mo
       <div id="admList">Memuat…</div>
     </div>
     <div class="np-card">
+      <div class="np-card-h"><h2>💳 Pembayaran &amp; Paket</h2><button class="np-btn ghost sm" id="payRefresh">↻ Muat ulang</button></div>
+      <p class="np-note">Cek dulu uangnya sudah masuk di rekening atau e-wallet, baru setujui. Masa Plus bertambah otomatis sesuai paket yang dibayar.</p>
+      <div id="payList">Memuat…</div>
+      <div class="np-h" style="margin-top:18px">Info pembayaran yang dilihat pengguna</div>
+      <textarea id="payInfo" class="np-ann" placeholder="Contoh:&#10;BCA 1234567890 a.n. Nama Kamu&#10;DANA / GoPay 0812xxxxxxx a.n. Nama Kamu&#10;Tulis username Ruang Tenang di berita transfer."></textarea>
+      <button class="np-btn pri block" id="payInfoSave">💾 Simpan Info Pembayaran</button>
+    </div>
+    <div class="np-card">
+      <div class="np-card-h"><h2>📣 Laporan &amp; Masukan</h2><button class="np-btn ghost sm" id="fbRefresh">↻ Muat ulang</button></div>
+      <div id="fbList">Memuat…</div>
+    </div>
+    <div class="np-card">
       <div class="np-card-h"><h2>📢 Pengumuman Global</h2></div>
       <p class="np-note">Pesan ini tampil sebagai banner di aplikasi <b>semua pengguna</b>. Kosongkan atau matikan untuk menyembunyikan.</p>
       <textarea id="annText" class="np-ann" placeholder="Tulis pengumuman… (mis. Pemeliharaan Minggu 22.00–23.00)"></textarea>
@@ -733,7 +838,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
 /* ================================================================ */
 (function(){
   const $=s=>document.querySelector(s);
-  const configured=/^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/.test(SUPABASE_URL)&&SUPABASE_ANON_KEY.length>30;
+  const configured=/^https:\/\/.+\.supabase\.co/.test(SUPABASE_URL)&&SUPABASE_ANON_KEY.length>40;
   const BUCKET="rt-media",TABLE="rt_docs";
   let sb=null,session=null,readyResolve;const ready=new Promise(r=>readyResolve=r);
   const urlCache={};
@@ -817,7 +922,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     isAdm=!!st.is_admin;
     if(isAdm){openConsole();return}
     if(st.status==="active"){$("#wait").classList.add("hide");document.body.style.overflow="";clearInterval(waitT);
-      if(!opened){opened=true;readyResolve(session);loadAnnouncement();setInterval(()=>{if(!document.hidden)loadAnnouncement()},120000)}
+      if(!opened){opened=true;readyResolve(session);loadAnnouncement();loadAccountCard();loadPlan();setInterval(()=>{if(!document.hidden)loadAnnouncement()},120000)}
       try{await sb.rpc("rt_touch")}catch(e){}
       return}
     const blocked=st.status==="blocked";
@@ -838,7 +943,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     $("#adm").classList.remove("hide");window.scrollTo(0,0);
     $("#admWho").textContent="@"+uname(session);document.title="Konsol Admin · Ruang Tenang";
     sb.rpc("rt_touch").then(()=>{},()=>{});
-    loadAdmin();loadAnnounceEditor();clearInterval(consoleT);consoleT=setInterval(()=>{if(!document.hidden)loadAdmin(true)},30000);
+    loadAdmin();loadAnnounceEditor();loadFeedback();loadPayments();loadPayInfo();clearInterval(consoleT);consoleT=setInterval(()=>{if(!document.hidden){loadAdmin(true);loadFeedback();loadPayments()}},30000);
   }
   $("#admOut").onclick=async()=>{await sb.auth.signOut();location.reload()};
   $("#admRefresh").onclick=()=>{loadAdmin();toast("Memuat ulang…")};
@@ -853,19 +958,21 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     const {data,error}=await sb.rpc("rt_admin_users");
     if(error){console.error("rt_admin_users",error);$("#admList").innerHTML=`<p class="np-empty">Gagal memuat daftar pengguna.<br><span style="font-size:12px;color:#be123c">${escA(error.message||"")}${error.code?" ("+escA(error.code)+")":""}</span><br><span style="font-size:12px">Jalankan supabase-perbaikan-admin.sql di Supabase, lalu muat ulang.</span></p>`;return}
     admRows=data||[];
+    try{const pl=await sb.rpc("rt_admin_plans");if(!pl.error){const M={};(pl.data||[]).forEach(x=>M[x.user_id]=x);admRows.forEach(r=>{const x=M[r.user_id];if(x){r.plus_until=x.plus_until;r.plus_source=x.plus_source}})}}catch(e){}
     const n=k=>admRows.filter(r=>r.status===k).length;
     const st=(l,v,c)=>`<div class="np-stat" style="--c:var(--${c})"><b>${v}</b><span>${l}</span></div>`;
-    $("#admStats").innerHTML=st("Total",admRows.length,"grape")+st("Menunggu",n("pending"),"amber")+st("Aktif",n("active"),"mint")+st("Dinonaktifkan",n("blocked"),"red");
+    $("#admStats").innerHTML=st("Total",admRows.length,"grape")+st("Menunggu",n("pending"),"amber")+st("Aktif",n("active"),"mint")+st("Dinonaktifkan",n("blocked"),"red")+st("Plus aktif",admRows.filter(isPlusRow).length,"grape");
     renderAdmin();
   }
+  const isPlusRow=r=>r.plus_until&&Date.parse(r.plus_until)>Date.now();
   const STB={pending:["#FFF4E5","#c2691b","Menunggu"],active:["#E6FAF5","#0f9d7a","Aktif"],blocked:["#FFF1F3","#be123c","Dinonaktifkan"]};
   function row(r){const me=r.user_id===session.user.id,m=STB[r.status]||["#F1F0F4","#666",r.status],pend=r.status==="pending",blk=r.status==="blocked";
     return `<div class="np-row ${pend?"pend":""}" data-id="${r.user_id}"><div class="np-info">
       <b>@${escA(r.username)}${r.is_admin?" 👑":""}${me?" (kamu)":""}</b>
-      <div class="np-badges"><span class="np-badge" style="background:${m[0]};color:${m[1]}">${m[2]}</span>${r.has_recovery?"":'<span class="np-badge" style="background:#F3F0FF;color:#6d28d9">Tanpa pertanyaan keamanan</span>'}</div>
+      <div class="np-badges"><span class="np-badge" style="background:${m[0]};color:${m[1]}">${m[2]}</span>${isPlusRow(r)?`<span class="np-badge" style="background:#FFF7D6;color:#a16207">⭐ Plus s/d ${tgl(r.plus_until)}${r.plus_source==="trial"?" (coba)":""}</span>`:r.is_admin?"":'<span class="np-badge" style="background:#F1F0F4;color:#666">Basic</span>'}${r.has_recovery?"":'<span class="np-badge" style="background:#F3F0FF;color:#6d28d9">Tanpa pertanyaan keamanan</span>'}</div>
       <span class="np-meta">Daftar ${tgl(r.created_at)} · ${ago(r.last_seen)} · ${r.days_written} hari tercatat · ${r.files} file</span></div>
       <div class="np-acts">${me?"":pend?'<button class="np-btn pri sm" data-a="approve">✓ Setujui</button><button class="np-btn danger sm" data-a="reject">Tolak</button>':blk?'<button class="np-btn pri sm" data-a="approve">Aktifkan</button>':'<button class="np-btn ghost sm" data-a="block" style="color:#be7b1b">⏸️ Nonaktifkan</button>'}
-      ${me?"":`<button class="np-btn ghost sm" data-a="pw" style="color:#7c3aed">🔑 Reset</button><button class="np-btn ghost sm" data-a="adm">${r.is_admin?"Cabut admin":"👑 Jadikan admin"}</button><button class="np-btn danger sm" data-a="del">🗑 Hapus</button>`}</div></div>`}
+      ${me?"":`<button class="np-btn ghost sm" data-a="plus" style="color:#a16207">⭐ Plus</button><button class="np-btn ghost sm" data-a="pw" style="color:#7c3aed">🔑 Reset</button><button class="np-btn ghost sm" data-a="adm">${r.is_admin?"Cabut admin":"👑 Jadikan admin"}</button><button class="np-btn danger sm" data-a="del">🗑 Hapus</button>`}</div></div>`}
   function renderAdmin(){
     const box=$("#admList"),q=$("#admQ").value.trim().toLowerCase(),sort=$("#admSort").value;
     if(!admRows.length){box.innerHTML='<p class="np-empty">Belum ada pengguna.</p>';return}
@@ -884,6 +991,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     if(a==="approve")return setStatus(r,"active");
     if(a==="reject"||a==="block")return setStatus(r,"blocked");
     if(a==="adm"){const {data,error}=await sb.rpc("rt_admin_set_admin",{p_user:id,p_value:!r.is_admin});toast(error?"Gagal: "+error.message:data==="ok"?`@${r.username} ${r.is_admin?"bukan admin lagi":"sekarang admin 👑"}`:"Tidak bisa mengubah akunmu sendiri.");if(!error)loadAdmin(true);return}
+    if(a==="plus")return openModal("Paket @"+r.username,`<p>${isPlusRow(r)?`Plus aktif sampai <b>${tgl(r.plus_until)}</b>.`:"Saat ini memakai Basic."} Pakai ini untuk hadiah, kompensasi, atau pembayaran di luar aplikasi.</p><div class="np-merr"></div><label>Tambah masa Plus (hari)</label><input type="number" id="psDays" min="1" max="3660" value="30"><button class="np-btn pri block" id="psGo" data-id="${id}">⭐ Tambah Plus</button>${isPlusRow(r)?`<button class="np-btn danger block" id="psOff" data-id="${id}" style="margin-top:8px">Cabut Plus sekarang</button>`:""}`);
     if(a==="pw")return openModal("Reset Sandi",`<p>Buat kata sandi sementara untuk <b>@${escA(r.username)}</b>. Beri tahu sandi ini ke pemiliknya, lalu minta dia menggantinya sendiri.</p><div class="np-merr"></div><label>Kata sandi sementara</label><input type="text" id="rsP" autocomplete="off" spellcheck="false" placeholder="minimal 6 karakter"><button class="np-btn pri block" id="rsGo" data-id="${id}">Reset Sandi Sekarang</button>`);
     if(a==="del")return openModal("Hapus Akun",`<p>Akun <b>@${escA(r.username)}</b> beserta ${r.days_written} hari catatannya akan dihapus permanen. Tindakan ini tidak bisa dibatalkan.</p><button class="np-btn danger block" id="delGo" data-id="${id}">🗑 Ya, hapus permanen</button><button class="np-btn ghost block" id="delNo">Batal</button>`);
   });
@@ -898,6 +1006,168 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     if(t.id==="cpGo"){const a1=$("#cpA").value,a2=$("#cpB").value;if(a1.length<6)return mErr("Kata sandi minimal 6 karakter.");if(a1!==a2)return mErr("Kedua kata sandi tidak sama.");
       t.disabled=true;const {error}=await sb.auth.updateUser({password:a1});t.disabled=false;if(error)return mErr("Gagal: "+error.message);closeModal();toast("Kata sandi admin diganti 🔑")}
   });
+
+  // ---------- pengaturan akun (pengguna) ----------
+  const QS=["Nama hewan peliharaan pertamamu?","Nama SD tempatmu bersekolah?","Nama sahabat masa kecilmu?","Makanan favoritmu waktu kecil?","Di kota mana ibumu lahir?"];
+  (function mountUserCards(){
+    const anchor=document.getElementById("themeCard");if(!anchor)return;
+    anchor.insertAdjacentHTML("afterend",`<div class="card" id="planCard"><h2 style="font-size:20px;margin-bottom:6px">⭐ Paket Kamu</h2><div id="planBody"><p class="help">Memeriksa…</p></div></div>
+      <div class="card" id="acctCard"><h2 style="font-size:20px;margin-bottom:6px">🔐 Akun &amp; Keamanan</h2>
+      <p class="help" style="margin-top:0">Masuk sebagai <b id="acctName">…</b>.</p><p class="help" id="secQInfo">Memeriksa pertanyaan keamanan…</p>
+      <div class="row"><button class="btn ghost" id="secQBtn">❓ Atur pertanyaan keamanan</button><button class="btn ghost" id="chPassBtn">🔑 Ganti kata sandi</button></div></div>
+      <div class="card" id="fbCard"><h2 style="font-size:20px;margin-bottom:6px">💬 Lapor &amp; Masukan</h2>
+      <p class="help" style="margin-top:0">Ada saran, ide fitur, atau sesuatu yang tidak berjalan? Pesanmu langsung masuk ke admin.</p>
+      <div class="row" style="margin-bottom:10px"><select id="fbKind"><option>Saran</option><option>Laporan bug</option><option>Pertanyaan</option><option>Lainnya</option></select></div>
+      <textarea id="fbMsg" maxlength="1000" style="min-height:90px" placeholder="Tulis pesanmu di sini…"></textarea>
+      <div class="row" style="margin-top:10px"><button class="btn" id="fbSend">Kirim ke admin</button><span class="help" id="fbInfo"></span></div>
+      <div id="fbMine" style="margin-top:12px"></div></div>`);
+  })();
+  async function loadAccountCard(){
+    const n=document.getElementById("acctName");if(!n)return;n.textContent="@"+uname(session);
+    try{const {data,error}=await sb.rpc("rt_my_recovery");if(error)throw error;
+      $("#secQInfo").innerHTML=data?`Pertanyaan keamananmu: <b>${escA(data)}</b>`:"⚠️ Kamu belum punya pertanyaan keamanan. Atur sekarang supaya bisa memulihkan akun kalau lupa kata sandi."}
+    catch(e){$("#secQInfo").textContent=/rt_my_recovery|function|does not exist|schema/i.test(e.message||"")?"Fitur ini aktif setelah admin menjalankan SQL akun & masukan.":"Gagal memeriksa pertanyaan keamanan."}
+    loadMyFeedback();
+  }
+  document.addEventListener("click",async e=>{
+    const t=e.target.closest("button");if(!t||!session)return;
+    if(t.id==="secQBtn"){openModal("Pertanyaan Keamanan",`<p>Dipakai untuk memulihkan akun kalau kamu lupa kata sandi, tanpa perlu admin.</p><div class="np-merr"></div>
+      <label>Pertanyaan</label><select id="sqSel" style="width:100%;margin-bottom:10px">${QS.map(q=>`<option>${q}</option>`).join("")}<option value="__own">Tulis pertanyaan sendiri…</option></select>
+      <input id="sqOwn" placeholder="Pertanyaanmu sendiri" maxlength="120" style="display:none"><label>Jawaban</label><input id="sqAns" autocomplete="off" placeholder="huruf besar/kecil tidak berpengaruh">
+      <button class="np-btn pri block" id="sqGo">Simpan Pertanyaan</button>`);
+      $("#sqSel").onchange=()=>{$("#sqOwn").style.display=$("#sqSel").value==="__own"?"block":"none"};return}
+    if(t.id==="sqGo"){const q=$("#sqSel").value==="__own"?$("#sqOwn").value.trim():$("#sqSel").value,a=$("#sqAns").value.trim();
+      if(q.length<5)return mErr("Tulis pertanyaannya.");if(a.length<2)return mErr("Isi jawabannya (minimal 2 huruf).");
+      t.disabled=true;const {error}=await sb.rpc("rt_set_recovery",{p_question:q,p_answer:a});t.disabled=false;
+      if(error)return mErr("Gagal: "+error.message);closeModal();toast("Pertanyaan keamanan disimpan ✓");loadAccountCard();return}
+    if(t.id==="chPassBtn"){openModal("Ganti Kata Sandi",`<p>Buat kata sandi baru untuk <b>@${escA(uname(session))}</b>.</p><div class="np-merr"></div><label>Kata sandi baru</label><input type="password" id="upA" autocomplete="new-password" placeholder="minimal 6 karakter"><label>Ulangi kata sandi baru</label><input type="password" id="upB" autocomplete="new-password"><button class="np-btn pri block" id="upGo">Simpan Kata Sandi</button>`);return}
+    if(t.id==="upGo"){const a1=$("#upA").value,a2=$("#upB").value;if(a1.length<6)return mErr("Kata sandi minimal 6 karakter.");if(a1!==a2)return mErr("Kedua kata sandi tidak sama.");
+      t.disabled=true;const {error}=await sb.auth.updateUser({password:a1});t.disabled=false;if(error)return mErr("Gagal: "+error.message);closeModal();toast("Kata sandi diganti 🔑");return}
+    if(t.id==="fbSend"){const msg=$("#fbMsg").value.trim();if(msg.length<3){$("#fbInfo").textContent="Tulis pesannya dulu ya.";return}
+      t.disabled=true;$("#fbInfo").textContent="Mengirim…";
+      const {error}=await sb.from("rt_feedback").insert({user_id:session.user.id,username:uname(session),kind:$("#fbKind").value,message:msg});
+      t.disabled=false;
+      if(error){$("#fbInfo").textContent=/relation|does not exist|schema cache|could not find/i.test(error.message)?"Fitur ini aktif setelah admin menjalankan SQL akun & masukan.":"Gagal mengirim: "+error.message;return}
+      $("#fbMsg").value="";$("#fbInfo").textContent="";toast("Terkirim ke admin. Terima kasih 🌸");loadMyFeedback()}
+  });
+  async function loadMyFeedback(){const box=document.getElementById("fbMine");if(!box)return;
+    try{const {data,error}=await sb.from("rt_feedback").select("kind,message,status,created_at").eq("user_id",session.user.id).order("created_at",{ascending:false}).limit(5);if(error)throw error;
+      box.innerHTML=(data||[]).length?`<p class="label" style="margin:6px 0 6px;font-size:14px">Kiriman terakhirmu</p>`+data.map(f=>`<div class="help" style="padding:8px 0;border-top:1px solid #f3dbe3"><b>${escA(f.kind)}</b> · ${tgl(f.created_at)} · ${f.status==="selesai"?"✅ ditindaklanjuti":"⏳ belum dibaca"}<br>${escA(f.message.slice(0,140))}</div>`).join(""):""}
+    catch(e){box.innerHTML=""}}
+  // ---------- masukan di konsol admin ----------
+  let fbRows=[];
+  async function loadFeedback(){const box=document.getElementById("fbList");if(!box)return;
+    const {data,error}=await sb.from("rt_feedback").select("*").order("created_at",{ascending:false}).limit(200);
+    if(error){box.innerHTML=`<p class="np-empty">${/relation|does not exist|schema cache|could not find/i.test(error.message)?"Jalankan supabase-akun-masukan.sql di Supabase untuk mengaktifkan fitur ini.":"Gagal memuat: "+escA(error.message)}</p>`;return}
+    fbRows=data||[];const baru=fbRows.filter(f=>f.status==="baru");
+    const KC={"Saran":["#EEF0FF","#4338ca"],"Laporan bug":["#FFF1F3","#be123c"],"Pertanyaan":["#FFF4E5","#c2691b"],"Lainnya":["#F1F0F4","#555"]};
+    const item=f=>{const k=KC[f.kind]||KC.Lainnya;return `<div class="fb-item ${f.status==="selesai"?"done":""}" data-id="${f.id}"><div class="fh"><span class="np-badge" style="background:${k[0]};color:${k[1]}">${escA(f.kind)}</span><b>@${escA(f.username)}</b><span class="np-meta">${tgl(f.created_at)} · ${new Date(f.created_at).toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}</span></div>
+      <p class="fm">${escA(f.message)}</p><div class="fa">${f.status==="baru"?'<button class="np-btn pri sm" data-f="done">✓ Tandai selesai</button>':'<button class="np-btn ghost sm" data-f="open">Buka lagi</button>'}<button class="np-btn danger sm" data-f="del">🗑 Hapus</button></div></div>`};
+    box.innerHTML=fbRows.length?(baru.length?`<div class="np-h">Baru (${baru.length})</div>`+baru.map(item).join(""):"")+(fbRows.length>baru.length?`<div class="np-h" style="margin-top:${baru.length?16:0}px">Sudah ditindaklanjuti (${fbRows.length-baru.length})</div>`+fbRows.filter(f=>f.status!=="baru").map(item).join(""):""):'<p class="np-empty">Belum ada laporan atau masukan.</p>';
+  }
+  document.addEventListener("click",async e=>{const b=e.target.closest("button[data-f]");if(!b)return;const id=+b.closest(".fb-item").dataset.id,a=b.dataset.f;
+    if(a==="del"){if(!b.classList.contains("sure")){b.classList.add("sure");b.textContent="Yakin hapus?";return}
+      const {error}=await sb.from("rt_feedback").delete().eq("id",id);toast(error?"Gagal: "+error.message:"Masukan dihapus");loadFeedback();return}
+    const {error}=await sb.from("rt_feedback").update({status:a==="done"?"selesai":"baru"}).eq("id",id);toast(error?"Gagal: "+error.message:a==="done"?"Ditandai selesai ✓":"Dibuka lagi");loadFeedback()});
+  document.addEventListener("click",e=>{if(e.target.closest("#fbRefresh")){loadFeedback();toast("Memuat ulang…")}});
+  // ---------- paket Basic / Plus ----------
+  const PRICES={1:49000,3:147000,12:490000};
+  const rp=n=>"Rp"+Number(n).toLocaleString("id-ID");
+  const PLUS_BEN=["Peta Pemicu dan pola emosi lengkap","Meditasi terpandu 5–10 menit","Semua pola napas","Semua tema warna, termasuk mode Malam","Ekspor PDF untuk dibawa konsultasi","Hingga 10 foto/video per hari (Basic: 1)"];
+  const isMissing=e=>/rt_my_plan|rt_payments|function|does not exist|schema cache|could not find/i.test((e&&e.message)||"");
+  let myPlan=null,planTimer=null,planErr=false;
+  async function loadPlan(){
+    try{const {data,error}=await sb.rpc("rt_my_plan");if(error)throw error;
+      myPlan=(Array.isArray(data)?data[0]:data)||{tier:"basic",trial_used:false,pending:0};planErr=false;
+      window.__rtPlan={tier:myPlan.tier,until:myPlan.plus_until}}
+    catch(e){console.warn("paket",e);myPlan=null;planErr=true;delete window.__rtPlan}
+    window.dispatchEvent(new Event("rtplan"));paintPlanCard();
+    clearTimeout(planTimer);planTimer=setTimeout(loadPlan,myPlan&&myPlan.pending?60000:600000);
+  }
+  document.addEventListener("visibilitychange",()=>{if(!document.hidden&&myPlan&&!isAdm)loadPlan()});
+  async function paintPlanCard(){
+    const box=document.getElementById("planBody");if(!box)return;
+    if(planErr){box.innerHTML=`<p class="help" style="margin:0">Pilihan paket aktif setelah admin menjalankan SQL paket. Sementara ini semua fitur terbuka untukmu.</p>`;return}
+    if(!myPlan){box.textContent="Memeriksa…";return}
+    const plus=myPlan.tier==="plus",until=myPlan.plus_until?new Date(myPlan.plus_until):null,left=until?Math.ceil((until-Date.now())/864e5):0;
+    let h=plus?`<p class="pl-st">⭐ Kamu memakai <b>Ruang Tenang Plus</b>${myPlan.plus_source==="trial"?" (masa coba)":""}.${until?`<br>Aktif sampai <b>${tgl(until)}</b> · ${left} hari lagi.`:""}</p>`
+      :`<p class="pl-st">Kamu memakai <b>Ruang Tenang Basic</b> (gratis).</p><p class="help" style="margin:6px 0 4px">Dengan Plus (${rp(PRICES[1])}/bulan) kamu juga dapat:</p><ul class="pl-ben" style="margin-bottom:10px">${PLUS_BEN.map(b=>`<li>${b}</li>`).join("")}</ul>`;
+    if(plus&&until&&left<=3)h+=`<p class="help" style="color:#be123c">Masa Plus hampir habis. Perpanjang supaya fitur Plus tetap terbuka. Catatanmu tidak akan hilang walau kembali ke Basic.</p>`;
+    if(myPlan.pending)h+=`<p class="help">⏳ Konfirmasi pembayaranmu sedang dicek admin. Plus aktif otomatis setelah disetujui.</p>`;
+    h+=`<div class="row" style="margin-top:10px">${!plus&&!myPlan.trial_used?`<button class="btn" id="planTrial">🎁 Coba Plus 7 hari gratis</button>`:""}${myPlan.pending?"":`<button class="btn${!plus&&!myPlan.trial_used?" ghost":""}" id="planUp">${plus?"Perpanjang Plus":"⭐ Berlangganan Plus"}</button>`}</div>
+      <p class="help" style="margin:10px 0 0">Jeda darurat, penahan pesan, Rencana Kalau–Maka, dan latihan napas dasar selalu gratis.</p><div id="planHist"></div>`;
+    box.innerHTML=h;
+    try{const {data}=await sb.from("rt_payments").select("months,amount,status,admin_note,created_at").eq("user_id",session.user.id).order("created_at",{ascending:false}).limit(3);
+      const ph=document.getElementById("planHist");if(ph&&data&&data.length)ph.innerHTML=`<p class="label" style="margin:14px 0 6px;font-size:13px">Riwayat pembayaran</p>`+data.map(x=>`<div class="help" style="padding:6px 0;border-top:1px solid #f3dbe3">${tgl(x.created_at)} · ${x.months} bulan · ${rp(x.amount)} · ${x.status==="disetujui"?"✅ disetujui":x.status==="ditolak"?"❌ ditolak":"⏳ dicek admin"}${x.admin_note?`<br><i>${escA(x.admin_note)}</i>`:""}</div>`).join("")}catch(e){}
+  }
+  async function payInfoText(){try{const {data}=await sb.from("rt_config").select("value").eq("key","payment").maybeSingle();return((data&&data.value)||{}).text||""}catch(e){return""}}
+  window.__rtUpgrade=async function(what){
+    if(!myPlan)return;
+    const trial=myPlan.tier!=="plus"&&!myPlan.trial_used;
+    const form=myPlan.pending?`<p>⏳ Konfirmasi pembayaranmu sebelumnya masih dicek admin. Plus aktif otomatis setelah disetujui.</p>`
+      :`<label>Pilih paket</label><div class="pl-opts">${[1,3,12].map(m=>`<label class="pl-opt"><input type="radio" name="plM" value="${m}"${m===1?" checked":""}>${m} bulan${m===12?" · hemat 2 bulan":""}<span>${rp(PRICES[m])}</span></label>`).join("")}</div>
+      <label>Cara bayar</label><div class="pl-info" id="plInfo">Memuat…</div>
+      <label>Metode yang kamu pakai</label><select id="plMet"><option>Transfer bank</option><option>QRIS</option><option>DANA</option><option>GoPay</option><option>OVO</option><option>ShopeePay</option></select>
+      <label>Nama pengirim (sesuai rekening / e-wallet)</label><input id="plSender" maxlength="80" autocomplete="name">
+      <label>Catatan (opsional)</label><input id="plNote" maxlength="300" placeholder="mis. jam transfer, 4 digit akhir rekening">
+      <label>Foto bukti bayar (opsional, maks 5 MB)</label><input type="file" id="plProof" accept="image/jpeg,image/png,image/webp">
+      <div class="np-merr"></div><button class="np-btn pri block" id="plGo">Saya sudah bayar, kirim konfirmasi</button>`;
+    openModal("⭐ Ruang Tenang Plus",`${what?`<p><b>${escA(what)}</b> termasuk fitur Plus.</p>`:""}<ul class="pl-ben">${PLUS_BEN.map(b=>`<li>${b}</li>`).join("")}</ul>
+      ${trial?`<button class="np-btn pri block" id="trialGo">🎁 Coba gratis 7 hari</button><div class="pl-or">atau langsung berlangganan</div>`:""}${form}`);
+    const info=document.getElementById("plInfo");if(info){const t=await payInfoText();info.textContent=t||"Admin belum mengisi info pembayaran. Coba lagi nanti, atau kirim pesan lewat Lapor & Masukan."}
+  };
+  async function startTrial(btn){btn.disabled=true;const {data,error}=await sb.rpc("rt_start_trial");btn.disabled=false;
+    if(error)return toast("Gagal: "+error.message);if(data!=="ok")return toast(data==="used"?"Masa coba sudah pernah dipakai.":"Akun belum aktif.");
+    closeModal();toast("🎁 Plus aktif 7 hari. Selamat mencoba!");loadPlan()}
+  document.addEventListener("click",async e=>{const t=e.target.closest("button");if(!t||!session)return;
+    if(t.id==="planUp")return window.__rtUpgrade();
+    if(t.id==="planTrial"||t.id==="trialGo")return startTrial(t);
+    if(t.id==="plGo"){
+      const m=+((document.querySelector('input[name="plM"]:checked')||{}).value||1),sender=$("#plSender").value.trim(),f=$("#plProof").files[0];
+      if(sender.length<2)return mErr("Tulis nama pengirim supaya admin bisa mencocokkan pembayaran.");
+      if(f&&(!/^image\/(jpeg|png|webp)$/.test(f.type)||f.size>5*1024*1024))return mErr("Bukti harus foto JPG/PNG/WEBP, maksimal 5 MB.");
+      t.disabled=true;t.textContent="Mengirim…";let proof=null;
+      try{
+        if(f){proof=session.user.id+"/"+Date.now()+"."+(f.type.split("/")[1]==="jpeg"?"jpg":f.type.split("/")[1]);
+          const up=await sb.storage.from("rt-bukti").upload(proof,f,{contentType:f.type,upsert:false});if(up.error)throw up.error}
+        const {data,error}=await sb.rpc("rt_request_payment",{p_months:m,p_method:$("#plMet").value,p_sender:sender,p_note:$("#plNote").value,p_proof:proof});
+        if(error)throw error;
+        if(data!=="ok"){t.disabled=false;t.textContent="Saya sudah bayar, kirim konfirmasi";return mErr(data==="pending"?"Masih ada konfirmasi yang sedang dicek admin.":data==="sender"?"Tulis nama pengirim.":"Data belum lengkap atau akun belum aktif.")}
+        closeModal();toast("Konfirmasi terkirim 🌸 Plus aktif setelah admin mengecek pembayaranmu.");loadPlan();
+      }catch(err){t.disabled=false;t.textContent="Saya sudah bayar, kirim konfirmasi";mErr(isMissing(err)?"Fitur pembayaran aktif setelah admin menjalankan SQL paket.":"Gagal mengirim: "+(err.message||err))}
+    }
+  });
+  // ---------- pembayaran di konsol admin ----------
+  let payRows=[];
+  async function loadPayments(){const box=document.getElementById("payList");if(!box)return;
+    const {data,error}=await sb.from("rt_payments").select("*").order("created_at",{ascending:false}).limit(150);
+    if(error){box.innerHTML=`<p class="np-empty">${isMissing(error)?"Jalankan supabase-paket.sql di Supabase untuk mengaktifkan paket dan pembayaran.":"Gagal memuat: "+escA(error.message)}</p>`;return}
+    payRows=data||[];const pend=payRows.filter(x=>x.status==="menunggu"),done=payRows.filter(x=>x.status!=="menunggu").slice(0,15);
+    const SC={menunggu:["#FFF4E5","#c2691b","Menunggu"],disetujui:["#E6FAF5","#0f9d7a","Disetujui"],ditolak:["#FFF1F3","#be123c","Ditolak"]};
+    const item=x=>{const c=SC[x.status];return `<div class="pay-item ${x.status==="menunggu"?"pend":""}" data-id="${x.id}"><div class="ph"><span class="np-badge" style="background:${c[0]};color:${c[1]}">${c[2]}</span><b>@${escA(x.username)}</b><b>${rp(x.amount)}</b><span class="np-meta">${x.months} bulan · ${tgl(x.created_at)} ${new Date(x.created_at).toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}</span></div>
+      <p class="pm">${escA(x.method)} · a.n. <b>${escA(x.sender)}</b>${x.note?` · ${escA(x.note)}`:""}${x.admin_note?`<br>Catatan admin: ${escA(x.admin_note)}`:""}</p>
+      <div class="fa" style="display:flex;gap:6px;flex-wrap:wrap">${x.proof_path?'<button class="np-btn ghost sm" data-p="proof">🧾 Lihat bukti</button>':""}${x.status==="menunggu"?'<button class="np-btn pri sm" data-p="ok">✓ Setujui</button><button class="np-btn danger sm" data-p="no">Tolak</button>':""}</div></div>`};
+    box.innerHTML=(pend.length?`<div class="np-h">Menunggu dicek (${pend.length})</div>`+pend.map(item).join(""):'<p class="np-empty" style="padding:10px 0">Tidak ada pembayaran yang menunggu.</p>')+(done.length?`<div class="np-h" style="margin-top:14px">Riwayat terakhir</div>`+done.map(item).join(""):"");
+    const st=document.getElementById("stPay");if(st)st.textContent=pend.length;
+  }
+  async function loadPayInfo(){const el=document.getElementById("payInfo");if(el)el.value=await payInfoText()}
+  document.addEventListener("click",async e=>{
+    if(e.target.closest("#payRefresh")){loadPayments();loadPayInfo();return toast("Memuat ulang…")}
+    if(e.target.closest("#payInfoSave")){const text=$("#payInfo").value.trim();const {error}=await sb.from("rt_config").upsert({key:"payment",value:{text},updated_at:new Date().toISOString()});
+      return toast(error?"Gagal: "+error.message:"Info pembayaran disimpan 💳")}
+    const b=e.target.closest("button[data-p]");if(!b)return;const x=payRows.find(r=>r.id===+b.closest(".pay-item").dataset.id);if(!x)return;
+    if(b.dataset.p==="proof"){const {data,error}=await sb.storage.from("rt-bukti").createSignedUrl(x.proof_path,300);if(error||!data)return toast("Bukti tidak bisa dibuka.");
+      return openModal("Bukti bayar @"+x.username,`<img src="${escA(data.signedUrl)}" alt="Bukti bayar" style="width:100%;border-radius:12px;display:block"><p style="margin-top:10px">${rp(x.amount)} · ${x.months} bulan · a.n. ${escA(x.sender)}</p>`)}
+    if(b.dataset.p==="ok"){if(!b.classList.contains("sure")){b.classList.add("sure");b.textContent=`Yakin ${rp(x.amount)} sudah masuk?`;return}
+      b.disabled=true;const {data,error}=await sb.rpc("rt_admin_decide_payment",{p_id:x.id,p_approve:true,p_note:""});
+      toast(error?"Gagal: "+error.message:data==="ok"?`Plus @${x.username} aktif +${x.months} bulan ⭐`:"Sudah diproses sebelumnya.");loadPayments();loadAdmin(true);return}
+    if(b.dataset.p==="no")return openModal("Tolak Pembayaran",`<p>Tolak konfirmasi <b>@${escA(x.username)}</b> (${rp(x.amount)}). Alasan akan terlihat oleh pengguna.</p><div class="np-merr"></div><label>Alasan</label><input id="pnNote" maxlength="300" placeholder="mis. Dana belum masuk, mohon cek nominal"><button class="np-btn danger block" id="pnGo" data-id="${x.id}">Tolak pembayaran</button>`);
+  });
+  document.addEventListener("click",async e=>{const t=e.target.closest("#pnGo,#psGo,#psOff");if(!t)return;
+    if(t.id==="pnGo"){t.disabled=true;const {error}=await sb.rpc("rt_admin_decide_payment",{p_id:+t.dataset.id,p_approve:false,p_note:$("#pnNote").value});closeModal();toast(error?"Gagal: "+error.message:"Pembayaran ditolak");loadPayments();return}
+    const days=t.id==="psOff"?0:parseInt($("#psDays").value,10);if(t.id==="psGo"&&!(days>0&&days<=3660))return mErr("Isi jumlah hari (1–3660).");
+    t.disabled=true;const r=admRows.find(x=>x.user_id===t.dataset.id);const {data,error}=await sb.rpc("rt_admin_set_plus",{p_user:t.dataset.id,p_days:days});
+    closeModal();toast(error?"Gagal: "+error.message:data!=="ok"?"Gagal mengubah paket.":days?`Plus @${r?r.username:""} +${days} hari ⭐`:`Plus @${r?r.username:""} dicabut`);loadAdmin(true)});
   // ---------- pengumuman global ----------
   async function loadAnnounceEditor(){try{const {data}=await sb.from("rt_config").select("value").eq("key","announcement").maybeSingle();const v=(data&&data.value)||{};$("#annText").value=v.text||"";$("#annActive").checked=!!v.active}catch(e){}}
   $("#annSave").onclick=async()=>{const text=$("#annText").value.trim(),active=$("#annActive").checked;
@@ -1055,6 +1325,22 @@ const hash=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))|0;return Math.a
 const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 function blobUrl(id){return window.__blobUrl?window.__blobUrl(id):"/_blob/"+id}
+// ---------- tema warna ----------
+const THEMES=[{id:"pink",n:"Pink",h:0},{id:"lavender",n:"Lavender",h:-78},{id:"langit",n:"Biru Langit",h:-140},{id:"mint",n:"Mint",h:172},{id:"peach",n:"Peach",h:30},{id:"netral",n:"Netral",h:0,neutral:true},{id:"malam",n:"Malam",h:0,dark:true}];
+let curTheme=THEMES[0];const _styleOrig=[...document.querySelectorAll("style")].map(el=>[el,el.textContent]);
+function _hsl(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);let h=0,s=0;const l=(mx+mn)/2;if(mx!==mn){const d=mx-mn;s=l>.5?d/(2-mx-mn):d/(mx+mn);h=mx===r?(g-b)/d+(g<b?6:0):mx===g?(b-r)/d+2:(r-g)/d+4;h*=60}return[h,s,l]}
+function _rgb(h,s,l){const k=n=>(n+h/30)%12,a=s*Math.min(l,1-l),f=n=>l-a*Math.max(-1,Math.min(k(n)-3,9-k(n),1));return[f(0),f(8),f(4)].map(x=>Math.round(x*255))}
+function _shift(r,g,b,t){let[h,s,l]=_hsl(r,g,b);if(t.dark){if(l>=.78){l=.09+(1-l)*.55;s=Math.min(s,.35)*.6}else if(l<=.4){l=.93-l*.35;s=Math.min(s,.25)}else if(l>.62){l=l*.72;s*=.8}return _rgb(h,s,l)}if(s<.08||t.id==="pink")return[r,g,b];if(t.neutral)s*=.14;else h=(h+t.h+360)%360;return _rgb(h,s,l)}
+const _hex=a=>"#"+a.map(x=>x.toString(16).padStart(2,"0")).join("");
+function tc(hex,t){t=t||curTheme;let x=hex.replace("#","");if(x.length===3)x=[...x].map(c=>c+c).join("");return _hex(_shift(parseInt(x.slice(0,2),16),parseInt(x.slice(2,4),16),parseInt(x.slice(4,6),16),t))}
+function _recolor(css,t){return css.replace(/#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b/g,m=>tc(m,t)).replace(/rgba?\((\d+),\s*(\d+),\s*(\d+)/g,(m,r,g,b)=>{const c=_shift(+r,+g,+b,t);return m.slice(0,m.indexOf("(")+1)+c.join(",")})}
+function applyTheme(id){const t=THEMES.find(x=>x.id===id)||THEMES[0];curTheme=t;
+  _styleOrig.forEach(([el,orig])=>{el.textContent=t.id==="pink"?orig:_recolor(orig,t)});
+  const r=document.documentElement.style;r.setProperty("--img-hue",(t.neutral?0:t.h)+"deg");r.setProperty("--img-sat",t.neutral?".15":"1");r.setProperty("--hero-sat",t.neutral?".35":"1");r.setProperty("--img-bri",t.dark?".62":"1");document.documentElement.classList.toggle("dark",!!t.dark);
+  const mc=document.querySelector('meta[name="theme-color"]');if(mc)mc.content=tc("#f6c9d6",t);
+  try{document.querySelectorAll("#themes button").forEach(b=>b.classList.toggle("on",b.dataset.t===t.id))}catch(e){}
+  try{if(typeof renderSide==="function")renderSide()}catch(e){}}
+try{const p0=JSON.parse(localStorage.getItem("ruangTenang.plan")||"{}");if(p0.theme&&p0.theme!=="pink")applyTheme(p0.theme)}catch(e){}
 const today=key(new Date());
 let cur=today;
 let entries={};          // date -> entry
@@ -1129,7 +1415,7 @@ async function flush(){
         saveLocal();
       }
     }
-    setSave(mode==="cloud"?"Tersimpan":"Tersimpan di perangkat ini");
+    setSave(mode==="cloud"?"Tersimpan":"Tersimpan di perangkat ini");try{checkBadges()}catch(e){}
   }catch(err){
     keys.forEach(k=>dirty.add(k));
     if(err&&err.code==="invalid_argument"&&mode==="cloud"){mode="local";saveLocal();setSave("Tersimpan di perangkat ini");noteStore();}
@@ -1147,14 +1433,14 @@ window.addEventListener("beforeunload",flushNow);
 document.addEventListener("visibilitychange",()=>{if(document.hidden)flushNow()});
 
 // ---------- init storage ----------
-entries=loadLocal();setTimeout(paintDay,0);setSave("Memuat…",true);
+var dataReady=false;entries=loadLocal();setTimeout(paintDay,0);setSave("Memuat…",true);
 (async()=>{
   let db=null,user=null;
   try{ if(window.claude&&claude.use){[db,user]=await Promise.all([claude.use("db"),claude.use("user")])} }catch(e){}
   const uid=user?await user.id():null;
   try{assets=await claude.use("assets")}catch(e){assets=null}
   paintAttach();
-  if(!db||!uid){mode="local";paintAttach();setSave("Tersimpan di perangkat ini");noteStore();return}
+  if(!db||!uid){mode="local";paintAttach();setSave("Tersimpan di perangkat ini");noteStore();dataReady=true;setTimeout(checkBadges,500);return}
   mode="cloud";col=db.collection("data/users/"+uid);noteStore();
   let first=true;
   const lt=setTimeout(()=>{if(first)setSave("Belum terhubung, menunggu…",true)},10000);
@@ -1170,10 +1456,10 @@ entries=loadLocal();setTimeout(paintDay,0);setSave("Memuat…",true);
     // migrate anything only in this browser on first load
     if(first){const loc=loadLocal();Object.keys(loc).forEach(k=>{if(!next[k]&&!isEmpty(loc[k])){next[k]=loc[k];dirty.add(k)}});}
     entries=next;
-    if(first){first=false;setSave("Tersimpan");migratePlan();migrateHolds();if(dirty.size)queueSave()}
+    if(first){first=false;setSave("Tersimpan");migratePlan();migrateHolds();if(dirty.size)queueSave();dataReady=true;setTimeout(checkBadges,800)}
     paintDay();
     if(!$("#v-history").classList.contains("hide"))renderHistory();
-  },err=>{clearTimeout(lt);mode="local";paintAttach();entries={...loadLocal(),...entries};setSave("Tersimpan di perangkat ini");noteStore()});
+  },err=>{clearTimeout(lt);mode="local";dataReady=true;paintAttach();entries={...loadLocal(),...entries};setSave("Tersimpan di perangkat ini");noteStore()});
 })();
 
 
@@ -1227,11 +1513,13 @@ async function shrink(f){
 function msg(t){$("#upMsg").textContent=t;const c=document.getElementById("calMsg");if(c&&!$("#v-cal").classList.contains("hide"))c.textContent=t}
 $("#fileIn").onchange=async ev=>{
   const files=[...ev.target.files];ev.target.value="";if(!files.length||!assets)return;
-  const d=cur;const errs=[];
+  const d=cur;const errs=[];let overLim=false;
   for(const f of files){
     const kind=kindOf(f);
     if(!kind){errs.push(f.name+": jenis file belum didukung");continue}
     if(kind==="image"&&/heic|heif/.test((f.type+f.name).toLowerCase())){errs.push(f.name+": format HEIC belum didukung, kirim sebagai JPG");continue}
+    if((kind==="image"||kind==="video")){const lim=isPlus()?10:1,have=((entries[d]&&entries[d].media)||[]).filter(m=>m.kind==="image"||m.kind==="video").length;
+      if(have>=lim){errs.push(f.name+": batas "+lim+" foto/video per hari"+(isPlus()?"":" di paket Basic"));overLim=true;continue}}
     const p={d};pending.push(p);paintMedia();msg("Mengunggah "+f.name+"…");
     try{
       let blob=kind==="image"?await shrink(f):f;
@@ -1246,7 +1534,7 @@ $("#fileIn").onchange=async ev=>{
     }finally{pending=pending.filter(x=>x!==p);paintMedia()}
   }
   if(dirty.size){clearTimeout(timer);flush()}
-  msg(errs.length?"⚠️ "+errs.join(" · "):"");
+  msg(errs.length?"⚠️ "+errs.join(" · "):"");if(overLim&&!isPlus())upsell("Lebih banyak foto per hari");
   if(typeof renderCal==="function"&&!$("#v-cal").classList.contains("hide")){renderCal();if(errs.length)$("#calMsg")&&($("#calMsg").textContent="⚠️ "+errs.join(" · "))}
 };
 $("#media").onclick=async ev=>{
@@ -1274,7 +1562,7 @@ function thumbs(e){
 let plan={signs:"",helps:"",words:"",people:"",letter:"",pinHash:"",pinLen:0,pinHint:"",blocks:[]},planT=null,planSaving=false,planDirty=false;
 try{plan={...plan,...JSON.parse(localStorage.getItem("ruangTenang.plan")||"{}")}}catch(e){}
 function paintPlan(){$$("textarea[data-p]").forEach(t=>{if(document.activeElement!==t)t.value=plan[t.dataset.p]||""})}
-function gotPlan(v){if(planDirty)return;plan={...plan,...(v||{})};paintPlan();if(typeof onPlanSong==="function")onPlanSong();paintPin();checkLock()}
+function gotPlan(v){if(planDirty)return;plan={...plan,...(v||{})};{const et=isPlus()?plan.theme:"pink";if(et&&et!==curTheme.id){applyTheme(et);try{paintThemes()}catch(e){}}}paintPlan();try{paintIf();renderMedStat()}catch(e){}if(typeof onPlanSong==="function")onPlanSong();paintPin();checkLock()}
 function migratePlan(){if(Object.values(plan).some(x=>typeof x==="string"?x.trim():Array.isArray(x)?x.length:x)){planDirty=true;savePlan()}}
 $$("textarea[data-p]").forEach(t=>t.addEventListener("input",()=>{plan[t.dataset.p]=t.value;planDirty=true;setSave("Mengetik…",true);clearTimeout(planT);planT=setTimeout(savePlan,1200)}));
 async function savePlan(){
@@ -1312,9 +1600,9 @@ const SOS=[
    <button>✋ Jangan membalas, mengetik, atau memutuskan apa pun dulu</button>
    <button>🚶 Kalau bisa, menjauh sebentar dari orang atau situasinya</button>
    <button>🤐 Kalau sedang bicara, bilang: "Aku butuh waktu sebentar."</button></div>`,
- ()=>`<h2>Apa yang kamu rasakan?</h2><p class="lead">Memberi nama pada emosi membantu otak sedikit menurunkan intensitasnya.</p>${chipHtml(EMO,wz.ep.emotions,"emotions")}<div style="margin-top:20px">${slider("before","Seberapa kuat sekarang?")}</div><p class="label" style="margin-top:18px">Kondisi tubuhku sekarang (HALT)</p>${chipHtml(HALT,wz.ep.halt,"halt")}`,
+ ()=>`<h2>Apa yang kamu rasakan?</h2><p class="lead">Memberi nama pada emosi membantu otak sedikit menurunkan intensitasnya.</p>${chipHtml(EMO,wz.ep.emotions,"emotions")}<div style="margin-top:20px">${slider("before","Seberapa kuat sekarang?")}</div><p class="label" style="margin-top:18px">Pemicunya apa? (boleh dilewati)</p>${chipHtml(TRIG,wz.ep.triggers,"triggers")}<p class="label" style="margin-top:18px">Kondisi tubuhku sekarang (HALT)</p>${chipHtml(HALT,wz.ep.halt,"halt")}`,
  ()=>`<h2>Biarkan gelombangnya lewat</h2><p class="lead">Emosi naik, memuncak, lalu turun dengan sendirinya. Ikuti lingkaran ini: tarik napas saat membesar, hembuskan pelan saat mengecil.</p>
-  <div class="worb"></div><div class="wphase" id="wph">Tarik napas…</div><div class="big" style="font-size:34px;margin-top:6px" id="wcd">1:30</div>${planBox()}`,
+  <div class="worb"></div><div class="wphase" id="wph">Tarik napas…</div><div class="big" style="font-size:34px;margin-top:6px" id="wcd">1:30</div>${ifThenBox()}${planBox()}`,
  ()=>`<h2>Lihat dari jarak</h2><p class="lead">Tulis saja, tidak ada yang akan membacanya selain kamu.</p>
   <div class="q"><label>Tadi aku ingin melakukan / mengatakan…</label>${ta("urge","Aku ingin…")}</div>
   <div class="q"><label>Kalau aku yang sudah tenang besok membaca ini, apa sarannya?</label>${ta("wise","Mungkin lebih baik…")}</div>`,
@@ -1384,9 +1672,11 @@ function finishWz(){
   $("#wzc").innerHTML=`<div style="text-align:center"><div style="font-size:44px">🌸</div><h2 style="margin:10px 0">Tersimpan</h2>
    ${ep.mode==="sos"&&drop>0?`<p class="big" style="font-size:30px">${ep.before} → ${ep.after}</p><p class="help">Intensitasmu turun ${drop} poin.</p>`:""}
    <p class="lead" style="margin-top:12px">${msgTxt}</p>
-   <div class="row" style="justify-content:center;margin-top:16px">${ep.mode==="sos"?`<button class="btn ghost" id="toRef">📝 Refleksi sekarang</button><button class="btn ghost" id="toHold">✉️ Mau membalas pesan? Tahan dulu</button>`:""}<button class="btn" id="wzDone">Selesai</button></div></div>`;
+   <div class="row" style="justify-content:center;margin-top:16px">${ep.mode==="sos"?`<button class="btn ghost" id="toRef">📝 Refleksi sekarang</button><button class="btn ghost" id="toHold">✉️ Mau membalas pesan? Tahan dulu</button>`:""}${ep.mode!=="sos"&&ep.next?`<button class="btn ghost" id="toIf">🧭 Jadikan rencana Kalau–Maka</button>`:""}<button class="btn" id="wzDone">Selesai</button></div></div>`;
   $("#wzDone").onclick=closeWz;
   const th=$("#toHold");if(th)th.onclick=()=>{closeWz();goTab("hold")};
+  const ti=$("#toIf");if(ti)ti.onclick=()=>{closeWz();prefillIf((ep.triggers||[])[0]||"",ep.trigger||"",ep.next||"")};
+  setTimeout(()=>{try{checkBadges()}catch(e){}},1500);
   const r=$("#toRef");if(r)r.onclick=()=>{const keep={emotions:ep.emotions,before:ep.before};openWz("reflect");Object.assign(wz.ep,keep);renderWz()};
   paintEps();
 }
@@ -1407,7 +1697,7 @@ $("#eps").addEventListener("click",async e=>{
   if(!b.classList.contains("sure")){b.classList.add("sure");b.textContent="Yakin hapus?";return}
   const en=entries[cur];en.episodes=en.episodes.filter((_,i)=>i!==+b.dataset.delep);dirty.add(cur);paintEps();clearTimeout(timer);flush();
 });
-function renderInsights(){
+function renderInsights(){if(!isPlus())return renderInsightsBasic();
   const cut=new Date();cut.setDate(cut.getDate()-29);const ck=key(cut);
   const eps=[];Object.values(entries).forEach(e=>{if(e.date>=ck)(e.episodes||[]).forEach(x=>eps.push(x))});
   if(!eps.length){$("#ins").innerHTML=`<p class="help" style="margin:0">Belum ada catatan emosi. Setiap kali kamu memakai tombol <b>Aku lagi emosi</b> atau menulis refleksi, polanya akan muncul di sini.</p>`;return}
@@ -1456,7 +1746,7 @@ async function saveHolds(){
   if(holdSaving){setTimeout(saveHolds,400);return}
   holdSaving=true;holdDirty=false;holds=holds.slice(-60);
   try{if(mode!=="cloud")localStorage.setItem("ruangTenang.holds",JSON.stringify(holds))}catch(e){}
-  try{if(mode==="cloud")await col.doc("holds").set({items:JSON.parse(JSON.stringify(holds))})}
+  try{if(mode==="cloud")await col.doc("holds").set({items:JSON.parse(JSON.stringify(holds))});try{checkBadges()}catch(e){}}
   catch(e){holdDirty=true;setTimeout(saveHolds,4000)}
   finally{holdSaving=false}
 }
@@ -1734,15 +2024,15 @@ function renderChart(){
   const pts=days.map((k,i)=>entries[k]&&entries[k].mood?[X(i),Y(entries[k].mood),k]:null).filter(Boolean);
   const fd=k=>{const d=parse(k);return d.getDate()+" "+BULAN[d.getMonth()].slice(0,3)};
   const step=n<=7?1:Math.ceil(n/6);
-  let g=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Grafik suasana hati"><defs><linearGradient id="ga" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f290a6" stop-opacity=".35"/><stop offset="1" stop-color="#f290a6" stop-opacity="0"/></linearGradient></defs>`;
+  let g=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Grafik suasana hati"><defs><linearGradient id="ga" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="${tc("#f290a6")}" stop-opacity=".35"/><stop offset="1" stop-color="${tc("#f290a6")}" stop-opacity="0"/></linearGradient></defs>`;
   [[5,"😄"],[3,"😐"],[1,"😣"]].forEach(([m,e])=>{g+=`<line x1="${L}" x2="${W-R}" y1="${Y(m)}" y2="${Y(m)}" stroke="#f6dde4" stroke-dasharray="3 4"/><text x="14" y="${Y(m)+6}" font-size="17" text-anchor="middle">${e}</text>`});
   g+=`<line x1="${L}" x2="${L}" y1="${T}" y2="${H-Bm}" stroke="#f3d6de"/>`;
   days.forEach((k,i)=>{if((n-1-i)%step===0)g+=`<text x="${X(i)}" y="${H-10}" font-size="11" fill="#8f7a88" text-anchor="middle">${fd(k)}</text>`});
   if(pts.length){
     const line=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" ");
     if(pts.length>1)g+=`<path d="${line} L${pts[pts.length-1][0].toFixed(1)} ${H-Bm} L${pts[0][0].toFixed(1)} ${H-Bm} Z" fill="url(#ga)"/>`;
-    g+=`<path d="${line}" fill="none" stroke="#e9637f" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>`;
-    pts.forEach(p=>{g+=`<circle cx="${p[0]}" cy="${p[1]}" r="${n>40?3:5}" fill="#e9637f" stroke="#fff" stroke-width="2"><title>${fd(p[2])}: ${MOODS[entries[p[2]].mood-1].t}</title></circle>`});
+    g+=`<path d="${line}" fill="none" stroke="${tc("#e9637f")}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>`;
+    pts.forEach(p=>{g+=`<circle cx="${p[0]}" cy="${p[1]}" r="${n>40?3:5}" fill="${tc("#e9637f")}" stroke="#fff" stroke-width="2"><title>${fd(p[2])}: ${MOODS[entries[p[2]].mood-1].t}</title></circle>`});
   }else g+=`<text x="${(W+L)/2}" y="${H/2-4}" font-size="13" fill="#8f7a88" text-anchor="middle">Pilih suasana hatimu setiap hari</text><text x="${(W+L)/2}" y="${H/2+14}" font-size="13" fill="#8f7a88" text-anchor="middle">untuk melihat grafiknya di sini</text>`;
   $("#moodChart").innerHTML=g+"</svg>";
 }
@@ -1850,6 +2140,11 @@ $("#impIn").onchange=async ev=>{
   clearTimeout(timer);await flush();paintDay();renderHistory();paintPlan();
   $("#bkMsg").textContent=`✅ ${n} hari catatan diimpor.${dropped?` ${dropped} foto/video lama tidak ikut, karena tersimpan di versi lain.`:""}`;
 };
+
+// ---------- pemilih tema ----------
+function paintThemes(){const pl=isPlus();$("#themes").innerHTML=THEMES.map((t,i)=>`<button data-t="${t.id}" class="${t.id===curTheme.id?"on":""}"><i style="background:linear-gradient(135deg,${tc("#e9637f",t)},${tc("#f290a6",t)} 55%,${tc("#fde3ea",t)})"></i>${t.n}${i&&!pl?" 🔒":""}</button>`).join("")}
+$("#themes").onclick=e=>{const b=e.target.closest("button[data-t]");if(!b)return;if(b.dataset.t!==THEMES[0].id&&needPlus("Tema warna"))return;applyTheme(b.dataset.t);plan.theme=b.dataset.t;planDirty=true;clearTimeout(planT);savePlan();paintThemes()};
+paintThemes();if(plan.theme&&plan.theme!==curTheme.id&&isPlus()){applyTheme(plan.theme);paintThemes()}
 // ---------- history ----------
 $("#search").oninput=renderHistory;
 function renderHistory(){
@@ -1866,7 +2161,7 @@ function renderHistory(){
     html+=`<div ${m?`style="background:${m.c}"`:""} data-t="${x.getDate()} ${BULAN[x.getMonth()].slice(0,3)}${m?" · "+m.t:""}"></div>`}
   $("#strip").innerHTML=html;
   $("#sAvg").textContent=n?MOODS[Math.round(sum/n)-1].e:"–";
-  renderInsights();renderWeek();
+  renderInsights();renderWeek();renderMap();renderAch();
   const q=$("#search").value.trim().toLowerCase();
   const shown=q?list.filter(e=>(Object.values(e.answers).join(" ")+" "+e.feelings.join(" ")).toLowerCase().includes(q)):list;
   if(!shown.length){$("#list").innerHTML=`<div class="empty">${q?"Tidak ada catatan yang cocok.":"Belum ada catatan. Mulai dengan menulis satu kalimat hari ini 🌱"}</div>`;return}
@@ -1898,6 +2193,199 @@ function paintG(){$("#gProg").innerHTML=GROUND.map((_,i)=>`<i class="${i<=g?"on"
 $("#gNext").onclick=()=>{g=g===GROUND.length-1?0:g+1;paintG()};
 $("#gBack").onclick=()=>{if(g>0){g--;paintG()}};
 paintG();
+
+// ================= paket Basic / Plus =================
+// Versi Claude (tanpa __rtPlan) selalu dianggap Plus. Versi GitHub mengisi window.__rtPlan dari Supabase.
+function isPlus(){return !window.__rtPlan||window.__rtPlan.tier==="plus"}
+function upsell(what){if(window.__rtUpgrade)window.__rtUpgrade(what);else toast("Fitur ini khusus Ruang Tenang Plus.")}
+function needPlus(what){if(isPlus())return false;upsell(what);return true}
+function toast(t,ms){const el=$("#rtToast");if(!el)return;el.textContent=t;el.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("on"),ms||3200)}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-up]");if(b){e.preventDefault();upsell(b.dataset.up)}});
+function paintTech(){$("#tech").innerHTML=Object.keys(TECH).map((k,i)=>`<button data-k="${k}" class="${k===tech?"on":""}">${k}${i&&!isPlus()?" 🔒":""}</button>`).join("")}
+$("#tech").onclick=e=>{const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.k!==Object.keys(TECH)[0]&&needPlus("Semua pola napas"))return;
+  tech=b.dataset.k;$$("#tech button").forEach(x=>x.classList.toggle("on",x===b));if(bOn){stopBreath();startBreath()}};
+paintTech();
+{const _pdf=$("#pdfBtn").onclick;$("#pdfBtn").onclick=()=>{if(needPlus("Ekspor PDF"))return;_pdf()}}
+function renderInsightsBasic(){
+  const cut=new Date();cut.setDate(cut.getDate()-6);const ck=key(cut);let n=0,p=0;
+  Object.values(entries).forEach(e=>{if(e.date>=ck)(e.episodes||[]).forEach(x=>{n++;if(x.mode==="sos"&&x.paused===true)p++})});
+  $("#ins").innerHTML=`<div class="ins"><div><b>${n}</b><span>kejadian 7 hari terakhir</span></div><div><b>${p}</b><span>berhasil jeda</span></div></div>
+   <div class="locked"><b>🔒 Pola lengkap khusus Plus</b><p class="help" style="margin:0 0 10px">Pemicu tersering, kondisi tubuh (HALT), waktu rawan, dan rata-rata penurunan intensitas.</p><button class="btn" data-up="Pola emosi lengkap">Lihat paket Plus</button></div>`;
+}
+window.addEventListener("rtplan",()=>{
+  const et=isPlus()?plan.theme:"pink";if(et&&et!==curTheme.id)applyTheme(et);
+  paintThemes();paintTech();renderMed();
+  if(!$("#v-history").classList.contains("hide"))renderHistory();
+});
+
+// ================= Rencana Kalau–Maka =================
+const ALLTRIG="Semua pemicu";
+function ifs(){return Array.isArray(plan.ifthen)?plan.ifthen:[]}
+function paintIf(){
+  const sel=$("#ifTrig"),keep=sel.value;
+  sel.innerHTML=[ALLTRIG,...TRIG].map(t=>`<option${t===keep?" selected":""}>${esc(t)}</option>`).join("");
+  const L=ifs();
+  $("#ifList").innerHTML=L.length?L.map(x=>`<div class="ifi" data-id="${x.id}"><div class="row" style="justify-content:space-between"><span class="badge">${esc(x.trig)}</span><button class="linkbtn" data-ifdel="${x.id}">Hapus</button></div>
+    ${x.when?`<p><b>Kalau</b> ${esc(x.when)}</p>`:""}<p><b>Maka aku akan</b> ${esc(x.then)}</p></div>`).join("")
+    :`<p class="help" style="margin:0 0 10px">Belum ada rencana. Mulai dari pemicu yang paling sering membuatmu meledak.</p>`;
+}
+$("#ifAdd").onclick=()=>{
+  const then=$("#ifThen").value.trim(),when=$("#ifWhen").value.trim();
+  if(then.length<3){$("#ifMsg").textContent="Tulis dulu apa yang akan kamu lakukan.";return}
+  plan.ifthen=[...ifs(),{id:Date.now().toString(36),trig:$("#ifTrig").value,when,then}].slice(-30);
+  $("#ifWhen").value="";$("#ifThen").value="";$("#ifMsg").textContent="Tersimpan. Rencana ini muncul di layar jeda 🌿";
+  planDirty=true;clearTimeout(planT);savePlan();paintIf();checkBadges();
+};
+$("#ifList").addEventListener("click",e=>{const b=e.target.closest("[data-ifdel]");if(!b)return;
+  if(!b.classList.contains("sure")){b.classList.add("sure");b.textContent="Yakin hapus?";return}
+  plan.ifthen=ifs().filter(x=>x.id!==b.dataset.ifdel);planDirty=true;clearTimeout(planT);savePlan();paintIf()});
+function ifThenBox(){
+  const tr=(wz&&wz.ep.triggers)||[],L=ifs();if(!L.length)return"";
+  let m=tr.length?L.filter(x=>x.trig===ALLTRIG||tr.includes(x.trig)):L;
+  m=m.slice(0,3);if(!m.length)return"";
+  return `<div class="ifbox"><b>🧭 Rencana yang sudah kamu siapkan</b>${m.map(x=>`<div>${x.when?`<span class="help">Kalau ${esc(x.when)}</span><br>`:""}➜ ${esc(x.then)}</div>`).join("")}</div>`;
+}
+function prefillIf(trig,when,then){
+  goTab("calm");setTimeout(()=>{if(trig)$("#ifTrig").value=TRIG.includes(trig)?trig:ALLTRIG;if(when!=null)$("#ifWhen").value=String(when).slice(0,160);if(then!=null)$("#ifThen").value=String(then).slice(0,400);
+    $("#ifCard").scrollIntoView({behavior:"smooth",block:"start"});setTimeout(()=>(then?$("#ifWhen"):$("#ifThen")).focus(),400)},80)}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-mkif]");if(b){e.preventDefault();prefillIf(b.dataset.mkif,"","")}});
+paintIf();
+
+// ================= Peta Pemicu =================
+let mapR="30";
+$("#mapSeg").onclick=e=>{const b=e.target.closest("button");if(!b)return;mapR=b.dataset.r;$$("#mapSeg button").forEach(x=>x.classList.toggle("on",x===b));renderMap()};
+const SLOT=["Pagi","Siang","Sore","Malam"],SLOTH=["05–10","11–14","15–17","18–04"],HR=["Sen","Sel","Rab","Kam","Jum","Sab","Min"],HRL=["Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu"];
+const slotOf=t=>{const h=+String(t||"12").slice(0,2);return h>=5&&h<11?0:h>=11&&h<15?1:h>=15&&h<18?2:3};
+function renderMap(){
+  if(!isPlus()){$("#map").innerHTML=`<div class="locked"><b>🔒 Peta Pemicu khusus Plus</b><p class="help" style="margin:0 0 10px">Lihat hari dan jam rawanmu, pemicu yang paling sering berhasil kamu jeda, tren mingguan, dan kaitannya dengan suasana hati.</p><button class="btn" data-up="Peta Pemicu">Lihat paket Plus</button></div>`;return}
+  let ck="";if(mapR!=="all"){const c=new Date();c.setDate(c.getDate()-(+mapR-1));ck=key(c)}
+  const days=Object.values(entries).filter(e=>e.date>=ck);
+  const eps=[];days.forEach(e=>(e.episodes||[]).forEach(x=>eps.push({...x,date:e.date})));
+  if(!eps.length){$("#map").innerHTML=`<p class="help" style="margin:12px 0 0">Belum ada catatan emosi di rentang ini. Setiap kali kamu memakai <b>Aku lagi emosi</b> atau menulis refleksi, petanya terisi sendiri.</p>`;return}
+  // 1. heatmap hari × waktu
+  const G=[...Array(7)].map(()=>[0,0,0,0]);
+  eps.forEach(x=>{const d=(parse(x.date).getDay()+6)%7;G[d][slotOf(x.t)]++});
+  const max=Math.max(...G.flat());let best=[0,0];G.forEach((r,i)=>r.forEach((v,j)=>{if(v>G[best[0]][best[1]])best=[i,j]}));
+  const base=tc("#f0466e");
+  let hm=`<div class="hm"><span></span>${SLOT.map((s,i)=>`<span title="${SLOTH[i]}">${s}</span>`).join("")}`;
+  G.forEach((r,i)=>{hm+=`<span class="l">${HR[i]}</span>`+r.map(v=>{const a=v?Math.round(18+82*v/max):0;return `<i style="${v?`background:color-mix(in srgb,${base} ${a}%,transparent);color:${a>55?"#fff":"var(--ink)"}`:""}">${v||""}</i>`}).join("")});
+  hm+="</div>";
+  const slotTot=[0,1,2,3].map(j=>G.reduce((a,r)=>a+r[j],0)),dayTot=G.map(r=>r.reduce((a,b)=>a+b,0));
+  const topSlot=slotTot.indexOf(Math.max(...slotTot)),topDay=dayTot.indexOf(Math.max(...dayTot));
+  // 2. pemicu
+  const T={};eps.forEach(x=>(x.triggers||[]).forEach(t=>{const o=T[t]=T[t]||{n:0,sum:0,sos:0,ok:0};o.n++;o.sum+=+x.before||0;if(x.mode==="sos"){o.sos++;if(x.paused===true)o.ok++}}));
+  const noTrig=eps.filter(x=>!(x.triggers||[]).length).length;
+  const tl=Object.entries(T).sort((a,b)=>b[1].n-a[1].n).slice(0,8);
+  const planned=new Set(ifs().map(x=>x.trig));const allPlanned=planned.has(ALLTRIG);
+  const tt=tl.length?`<table class="tt"><tr><th>Pemicu</th><th class="n">Kejadian</th><th class="n">Rata² kuat</th><th class="n">Berhasil jeda</th><th class="n">Rencana</th></tr>${tl.map(([k,o])=>`<tr><td>${esc(k)}</td><td class="n">${o.n}×</td><td class="n">${(o.sum/o.n).toFixed(1)}</td><td class="n">${o.sos?Math.round(o.ok/o.sos*100)+"%":"–"}</td><td class="n">${planned.has(k)||allPlanned?"🧭":`<button class="linkbtn" data-mkif="${esc(k)}">+ Buat</button>`}</td></tr>`).join("")}</table>`
+    :`<p class="help">Pemicunya belum pernah dicatat. Pilih pemicu saat menekan <b>Aku lagi emosi</b> atau saat menulis refleksi.</p>`;
+  // 3. tren mingguan
+  const mon=new Date();mon.setHours(0,0,0,0);mon.setDate(mon.getDate()-((mon.getDay()+6)%7));
+  const W=mapR==="30"?5:mapR==="90"?13:12,wk=[];
+  for(let i=W-1;i>=0;i--){const s=new Date(mon);s.setDate(s.getDate()-7*i);const e=new Date(s);e.setDate(e.getDate()+7);const sk=key(s),ek=key(e);
+    const xs=eps.filter(x=>x.date>=sk&&x.date<ek);wk.push({l:s.getDate()+"/"+(s.getMonth()+1),n:xs.length,ok:xs.filter(x=>x.mode==="sos"&&x.paused===true).length})}
+  const wmax=Math.max(1,...wk.map(w=>w.n));
+  const trend=`<div class="wkb">${wk.map(w=>`<div title="${w.n} kejadian, ${w.ok} berhasil jeda"><i style="height:${Math.max(3,w.n/wmax*100)}%"></i><small>${w.l}</small></div>`).join("")}</div>`;
+  const half=Math.floor(wk.length/2),a1=wk.slice(0,half).reduce((a,w)=>a+w.n,0)/Math.max(1,half),a2=wk.slice(half).reduce((a,w)=>a+w.n,0)/Math.max(1,wk.length-half);
+  const trendTxt=a1===a2?"Jumlah kejadian per minggu relatif stabil.":a2<a1?`Kejadian per minggu <b>menurun</b> dari rata-rata ${a1.toFixed(1)} ke ${a2.toFixed(1)}. Kerja bagus 🌿`:`Kejadian per minggu naik dari rata-rata ${a1.toFixed(1)} ke ${a2.toFixed(1)}. Mungkin ada yang sedang berat belakangan ini.`;
+  // 4. suasana hati
+  const withE=days.filter(e=>(e.episodes||[]).length&&e.mood),without=days.filter(e=>!(e.episodes||[]).length&&e.mood);
+  const avg=l=>l.length?(l.reduce((a,e)=>a+e.mood,0)/l.length):null;const m1=avg(withE),m0=avg(without);
+  const moodTxt=m1!=null&&m0!=null?`<div class="ins" style="margin-top:8px"><div><b>${MOODS[Math.round(m1)-1].e} ${m1.toFixed(1)}</b><span>suasana hati di hari ada kejadian</span></div><div><b>${MOODS[Math.round(m0)-1].e} ${m0.toFixed(1)}</b><span>di hari tanpa kejadian</span></div></div>`:`<p class="help">Isi suasana hati di jurnal harian supaya kaitannya terlihat.</p>`;
+  // 5. HALT
+  const H={};eps.forEach(x=>(x.halt||[]).forEach(h=>H[h]=(H[h]||0)+1));const hl=Object.entries(H).sort((a,b)=>b[1]-a[1]).slice(0,4);
+  const haltTxt=hl.length?`<div class="bars">${hl.map(([k,v])=>`<div><span style="min-width:150px">${esc(k)}</span><i style="width:${Math.max(8,v/hl[0][1]*120)}px"></i><span>${Math.round(v/eps.length*100)}%</span></div>`).join("")}</div>`:`<p class="help">Belum ada kondisi tubuh (HALT) yang dicatat.</p>`;
+  const top=tl[0];
+  $("#map").innerHTML=`<p class="help" style="margin:12px 0 0">${eps.length} kejadian. Paling rawan: <b>${HRL[best[0]]} ${SLOT[best[1]].toLowerCase()}</b> (${G[best[0]][best[1]]}×). Hari terberat <b>${HRL[topDay]}</b>, waktu tersering <b>${SLOT[topSlot].toLowerCase()}</b> (pukul ${SLOTH[topSlot]}).</p>${hm}
+    <p class="label" style="margin:22px 0 2px">Pemicu</p>${tt}${noTrig?`<p class="help" style="margin:6px 0 0">${noTrig} kejadian tanpa pemicu yang dicatat.</p>`:""}
+    ${top&&!planned.has(top[0])&&!allPlanned?`<div class="tip">🧭 <b>${esc(top[0])}</b> adalah pemicu tersering dan belum punya rencana. <button class="linkbtn" data-mkif="${esc(top[0])}">Buat rencana Kalau–Maka sekarang</button></div>`:""}
+    <p class="label" style="margin:22px 0 0">Tren per minggu</p>${trend}<p class="help" style="margin:6px 0 0">${trendTxt}</p>
+    <p class="label" style="margin:22px 0 0">Kaitan dengan suasana hati</p>${moodTxt}
+    <p class="label" style="margin:22px 0 4px">Kondisi tubuh saat tersulut</p>${haltTxt}`;
+}
+
+// ================= Pencapaian =================
+function achList(){
+  const days=Object.values(entries).filter(e=>!isEmpty(e)),eps=days.flatMap(e=>e.episodes||[]);
+  const sos=eps.filter(x=>x.mode==="sos"),paused=sos.filter(x=>x.paused===true).length,refl=eps.filter(x=>x.mode!=="sos").length;
+  const ds=days.map(e=>e.date).sort();let best=0,run=0,prev=null;
+  ds.forEach(d=>{if(prev){const p=parse(prev);p.setDate(p.getDate()+1);run=key(p)===d?run+1:1}else run=1;best=Math.max(best,run);prev=d});
+  const ans=(e,k)=>e.answers&&e.answers[k]&&String(e.answers[k]).trim();
+  const grat=days.filter(e=>ans(e,"grateful")).length,photos=days.reduce((a,e)=>a+(e.media||[]).filter(m=>m.kind==="image").length,0);
+  const hd=holds.filter(h=>h.status==="discarded"||h.status==="edited").length,drop=sos.some(x=>x.after!=null&&x.before-x.after>=5)?1:0;
+  const halt=eps.filter(x=>(x.halt||[]).length).length,med=(plan.medLog||[]).length,ready=(plan.letter||"").trim()&&ifs().length?1:0;
+  return[
+   ["first","🌱","Langkah pertama","Menulis catatan pertama",days.length,1],
+   ["st7","🔥","Seminggu konsisten","Menulis 7 hari berturut-turut",best,7],
+   ["st30","🌟","Sebulan konsisten","Menulis 30 hari berturut-turut",best,30],
+   ["d50","📚","50 hari tercatat","Total 50 hari punya catatan",days.length,50],
+   ["sos1","✋","Jeda pertama","Menekan tombol jeda saat emosi naik",sos.length,1],
+   ["p5","🛡️","Penjaga jeda","5 kali berhasil jeda sebelum bereaksi",paused,5],
+   ["p25","🏔️","Tenang di tengah badai","25 kali berhasil jeda sebelum bereaksi",paused,25],
+   ["drop","🌊","Gelombang reda","Intensitas turun 5 poin atau lebih dalam satu jeda",drop,1],
+   ["r5","🪞","Jujur pada diri","Menulis 5 refleksi kejadian",refl,5],
+   ["h1","✉️","Pesan yang tertahan","Membuang atau mengubah pesan yang ditahan",hd,1],
+   ["h10","🕊️","Kata yang terjaga","10 pesan dibuang atau diubah",hd,10],
+   ["plan","🧭","Siap sebelum badai","Menulis surat untuk diri + 1 rencana Kalau–Maka",ready,1],
+   ["halt","🫀","Pendengar tubuh","10 catatan dengan kondisi tubuh (HALT)",halt,10],
+   ["g10","🙏","Hati yang bersyukur","Menulis rasa syukur di 10 hari",grat,10],
+   ["m1","🪷","Meditasi pertama","Menyelesaikan satu sesi meditasi",med,1],
+   ["m10","🧘","Batin yang terlatih","Menyelesaikan 10 sesi meditasi",med,10],
+   ["ph10","📷","Penyimpan kenangan","Menyimpan 10 foto",photos,10]
+  ].map(([id,e,n,d,v,goal])=>({id,e,n,d,v:Math.min(v,goal),goal,got:v>=goal||(Array.isArray(plan.badges)&&plan.badges.includes(id))}));
+}
+function renderAch(){const L=achList(),n=L.filter(a=>a.got).length;
+  $("#achSum").textContent=n+" dari "+L.length;
+  $("#ach").innerHTML=L.sort((a,b)=>b.got-a.got).map(a=>`<div class="${a.got?"got":""}" title="${esc(a.d)}"><div class="bi">${a.e}</div><b>${esc(a.n)}</b><span>${esc(a.d)}</span>${a.got?"":`<div class="pg"><i style="width:${Math.round(a.v/a.goal*100)}%"></i></div><span>${a.v}/${a.goal}</span>`}</div>`).join("")}
+function checkBadges(){
+  if(!dataReady)return;const got=achList().filter(a=>a.v>=a.goal).map(a=>a.id);
+  if(!Array.isArray(plan.badges)){plan.badges=got;planDirty=true;clearTimeout(planT);savePlan();return}
+  const nw=got.filter(id=>!plan.badges.includes(id));if(!nw.length)return;
+  plan.badges=[...plan.badges,...nw];planDirty=true;clearTimeout(planT);savePlan();
+  const a=achList().find(x=>x.id===nw[0]);toast(`🏅 Pencapaian baru: ${a.e} ${a.n}${nw.length>1?` (+${nw.length-1} lainnya)`:""}`,4500);
+  if(!$("#v-history").classList.contains("hide"))renderAch();
+}
+
+// ================= Meditasi terpandu =================
+const MEDS=[
+ {id:"reda",e:"🔥",n:"Meredakan amarah",d:"Saat dada masih terasa panas",min:3,free:true,cues:[[0,"Kamu sudah memilih berhenti sejenak. Itu langkah yang berani."],[10,"Duduk atau berdiri dengan nyaman. Biarkan bahumu turun pelan-pelan."],[22,"Tarik napas lewat hidung… lalu hembuskan lebih panjang lewat mulut."],[36,"Sekali lagi. Tarik… dan hembuskan, seperti meniup lilin pelan-pelan."],[50,"Rasakan di mana panas itu berada. Di dada? Di wajah? Di tangan?"],[64,"Tidak perlu mengusirnya. Cukup sadari: “Aku sedang marah.”"],[78,"Amarah itu seperti ombak. Ia naik, memuncak, lalu turun dengan sendirinya."],[94,"Buka kepalan tanganmu. Lemaskan rahang. Biarkan lidah beristirahat."],[108,"Setiap hembusan napas, bayangkan sedikit panas itu keluar dari tubuhmu."],[124,"Kamu tidak harus memutuskan apa pun sekarang. Keputusan bisa menunggu."],[140,"Kamu boleh merasa marah. Tapi kamu yang memilih apa yang dilakukan."],[156,"Tarik napas sekali lagi… dan lepaskan."],[168,"Pelan-pelan kembali. Kamu sudah memberi jeda, dan itu cukup untuk sekarang."]]},
+ {id:"lepas",e:"🍃",n:"Melepas yang mengganjal",d:"Setelah kejadian yang bikin menyesal",min:5,cues:[[0,"Selamat datang. Untuk lima menit ke depan, tidak ada yang perlu diperbaiki."],[12,"Cari posisi yang nyaman. Letakkan satu tangan di dada kalau kamu mau."],[26,"Tarik napas pelan… tahan sebentar… lalu hembuskan."],[42,"Mungkin ada kejadian yang masih terasa mengganjal. Biarkan ia muncul sebentar."],[58,"Perhatikan perasaan yang menyertainya. Menyesal, malu, atau sedih. Beri ia nama."],[76,"Menyesal artinya kamu peduli. Itu bagian dari dirimu yang baik."],[94,"Bayangkan sahabatmu mengalami hal yang sama dan datang padamu."],[112,"Apa yang akan kamu katakan padanya? Katakan hal yang sama pada dirimu."],[132,"Ulangi pelan dalam hati: “Aku sedang belajar. Aku boleh salah.”"],[152,"Tarik napas… bayangkan kamu menghirup kelembutan."],[168,"Hembuskan… bayangkan sebagian beban itu ikut keluar."],[186,"Yang sudah terjadi tidak bisa diulang. Tapi langkah berikutnya masih milikmu."],[206,"Kalau perlu memperbaiki sesuatu, kamu bisa melakukannya nanti, saat sudah tenang."],[226,"Untuk sekarang, cukup bernapas. Masuk… dan keluar."],[248,"Rasakan tanganmu, kakimu, dan tempatmu berpijak. Kamu ada di sini."],[268,"Terima kasih pada dirimu karena sudah meluangkan waktu ini."],[286,"Buka mata pelan-pelan saat kamu siap."]]},
+ {id:"tubuh",e:"🫧",n:"Menyapa tubuh",d:"Body scan pelan dari kepala sampai kaki",min:10,cues:[[0,"Selamat datang. Kita akan menyapa tubuh dari kepala sampai kaki, pelan-pelan."],[15,"Duduk atau berbaring dengan nyaman. Pejamkan mata, atau tatap lembut ke bawah."],[35,"Tarik napas dalam… dan hembuskan perlahan. Sekali lagi."],[55,"Arahkan perhatianmu ke puncak kepala. Rasakan apa pun yang ada di sana."],[80,"Turun ke dahi. Kalau ada kerutan, biarkan ia melembut."],[105,"Rasakan sekitar matamu. Biarkan kelopak mata terasa berat dan santai."],[130,"Lemaskan rahang. Biarkan gigi atas dan bawah sedikit berjarak."],[155,"Perhatikan leher dan tenggorokan. Setiap hembusan napas melonggarkannya."],[180,"Bahu sering menyimpan beban hari ini. Biarkan ia turun, sedikit demi sedikit."],[210,"Rasakan lengan atas, siku, lengan bawah… sampai ke ujung jari."],[240,"Tangan yang tadi mungkin mengepal, sekarang boleh terbuka dan beristirahat."],[270,"Kembali ke dada. Rasakan ia naik saat menarik napas, dan turun saat menghembuskan."],[300,"Kalau ada rasa sesak atau panas, sapa saja: “Aku melihatmu.” Lalu bernapas di sekitarnya."],[330,"Turun ke perut. Biarkan perut mengembang bebas, tidak perlu ditahan."],[360,"Rasakan punggung bawah dan pinggul yang ditopang tempat dudukmu."],[390,"Perhatikan paha, lutut, dan betis. Biarkan semuanya terasa berat."],[420,"Sampai ke telapak kaki. Rasakan pijakanmu, kokoh dan aman."],[450,"Sekarang rasakan seluruh tubuh sekaligus, dari kepala sampai kaki."],[480,"Tubuhmu sudah bekerja keras hari ini. Terima kasih, tubuhku."],[510,"Tarik napas penuh… dan hembuskan pelan."],[540,"Saat kamu siap, gerakkan jari tangan dan kaki pelan-pelan."],[570,"Buka mata. Bawa sedikit ketenangan ini ke langkahmu berikutnya."]]},
+ {id:"tidur",e:"🌙",n:"Sebelum tidur",d:"Menutup hari dengan lembut",min:10,cues:[[0,"Hari ini sudah hampir selesai. Waktunya pelan-pelan beristirahat."],[15,"Berbaring dengan nyaman. Biarkan tubuhmu ditopang sepenuhnya oleh kasur."],[35,"Tarik napas empat hitungan… dan hembuskan enam hitungan."],[60,"Sekali lagi. Biarkan hembusan lebih panjang dari tarikan napas."],[85,"Ingat satu hal kecil yang berjalan baik hari ini. Sekecil apa pun."],[115,"Kalau ada yang belum selesai, katakan dalam hati: “Besok saja. Sekarang aku istirahat.”"],[145,"Bayangkan setiap pikiran seperti awan yang lewat. Kamu tidak perlu mengikutinya."],[175,"Biarkan dahi dan mata melembut."],[200,"Biarkan bahu tenggelam ke kasur."],[225,"Biarkan tangan terasa berat dan hangat."],[250,"Biarkan napas berjalan sendiri, tanpa perlu diatur."],[280,"Kalau masih ada rasa kesal dari siang tadi, letakkan ia di samping. Ia bisa menunggu sampai besok."],[315,"Kamu sudah melakukan yang kamu bisa hari ini. Itu cukup."],[345,"Dengarkan suara di sekitarmu, lalu biarkan ia menjauh."],[380,"Tarik napas pelan… hembuskan lebih pelan."],[420,"Rasakan tubuhmu semakin berat, semakin hangat."],[460,"Tidak ada yang perlu dikerjakan. Tidak ada yang perlu dipikirkan."],[500,"Kamu aman. Kamu boleh beristirahat."],[540,"Selamat tidur. 🌙"]]}];
+let medS=null;
+function renderMed(){$("#medList").innerHTML=MEDS.map(m=>`<button data-med="${m.id}"><span class="e">${m.e}</span><span><b>${esc(m.n)}${!m.free&&!isPlus()?' <span class="lk">🔒 Plus</span>':""}</b><small>${esc(m.d)}</small></span><span class="m">${m.min} menit</span></button>`).join("");renderMedStat()}
+function renderMedStat(){const L=plan.medLog||[];$("#medStat").textContent=L.length?`Kamu sudah menyelesaikan ${L.length} sesi (${L.reduce((a,x)=>a+(x.min||0),0)} menit). 🌿`:""}
+$("#medList").onclick=e=>{const b=e.target.closest("[data-med]");if(b)openMed(b.dataset.med)};
+function bell(v){try{
+  if(!ac){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ac=new AC();master=ac.createGain();master.connect(ac.destination);master.gain.value=$("#sndVol").value/100}
+  ac.resume&&ac.resume();const t=ac.currentTime;
+  [[528,1],[792,.35],[1056,.2]].forEach(([f,a])=>{const o=ac.createOscillator(),g=ac.createGain();o.type="sine";o.frequency.value=f;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.09*v*a,t+0.03);g.gain.exponentialRampToValueAtTime(0.0001,t+3.2);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+3.3)})}catch(e){}}
+function openMed(id){
+  const m=MEDS.find(x=>x.id===id);if(!m)return;if(!m.free&&needPlus("Meditasi terpandu"))return;
+  const sv=$("#medSnd").value;let snd=false;
+  if(sv==="song"){if(hasSong()){playSong(true);snd=true}}else if(sv){playSound(sv);snd=true}
+  medS={m,t:0,idx:-1,paused:false,total:m.min*60,snd,done:false};
+  $("#med").classList.remove("hide","paused");document.body.style.overflow="hidden";
+  $("#medT").textContent=m.e+" "+m.n;$("#medPause").textContent="⏸️ Jeda";$("#medCue").textContent="";$("#medBar").style.width="0";
+  bell(.6);tickMed();medS.iv=setInterval(tickMed,1000);
+}
+function showCue(t){const c=$("#medCue");c.classList.add("fade");setTimeout(()=>{c.textContent=t;c.classList.remove("fade")},700)}
+function tickMed(){const s=medS;if(!s||s.paused||s.done)return;
+  let i=s.idx;while(i+1<s.m.cues.length&&s.m.cues[i+1][0]<=s.t)i++;
+  if(i!==s.idx){s.idx=i;showCue(s.m.cues[i][1])}
+  $("#medBar").style.width=Math.min(100,s.t/s.total*100)+"%";const left=s.total-s.t;
+  $("#medLeft").textContent=Math.floor(left/60)+":"+pad(left%60)+" lagi";
+  if(s.t>=s.total)return finishMed();s.t++}
+function finishMed(){const s=medS;clearInterval(s.iv);s.done=true;$("#medBar").style.width="100%";
+  $("#medLeft").textContent="Sesi selesai 🌿";$("#medPause").textContent="Tutup";bell(.5);
+  plan.medLog=[...(plan.medLog||[]),{d:key(new Date()),id:s.m.id,min:s.m.min}].slice(-300);planDirty=true;clearTimeout(planT);savePlan();renderMedStat();checkBadges()}
+function closeMed(){if(!medS)return;clearInterval(medS.iv);if(medS.snd)stopSound();medS=null;$("#med").classList.add("hide");document.body.style.overflow=""}
+$("#medX").onclick=closeMed;
+$("#medPause").onclick=()=>{if(!medS)return;if(medS.done)return closeMed();medS.paused=!medS.paused;$("#med").classList.toggle("paused",medS.paused);
+  $("#medPause").textContent=medS.paused?"▶️ Lanjutkan":"⏸️ Jeda";if(medS.paused){if(songEl&&curSnd==="song")songEl.pause();else if(ac)ac.suspend&&ac.suspend()}else{if(songEl&&curSnd==="song")songEl.play().catch(()=>{});else if(ac)ac.resume&&ac.resume()}};
+renderMed();
+
 })();
 </script>
 </body>
