@@ -749,6 +749,9 @@ body.admin-mode .app,body.admin-mode .sosbtn,body.admin-mode .acct,body.admin-mo
 .pay-item{padding:12px 14px;background:#fdf3f6;border:1px solid var(--line);border-radius:11px;margin-bottom:8px}
 .pay-item.pend{background:#fff8ef;border-color:#f6dcc0}.pay-item .ph{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
 .pay-item .ph b{font-size:14px}.pay-item .pm{font-size:13px;color:#7a6470;margin:0 0 8px;line-height:1.5}
+.pl-price{text-align:left;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;background:#fff5f8;border:1px solid #f6c9d6;border-radius:14px;padding:12px 14px;margin:10px 0 6px}
+.pl-price s{color:#a08a95;font-size:14px}.pl-price b{font-size:22px;color:#e8365d;font-family:Lora,serif}.pl-price span{flex-basis:100%;font-size:12.5px;color:#7a6470}
+.pl-price.big{margin:4px 0 14px}.pl-price.big b{font-size:28px}
 </style>
 <div class="auth hide" id="auth"><div class="box">
   <h2>Ruang Tenang</h2>
@@ -973,7 +976,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
   function row(r){const me=r.user_id===session.user.id,m=STB[r.status]||["#F1F0F4","#666",r.status],pend=r.status==="pending",blk=r.status==="blocked";
     return `<div class="np-row ${pend?"pend":""}" data-id="${r.user_id}"><div class="np-info">
       <b>@${escA(r.username)}${r.is_admin?" 👑":""}${me?" (kamu)":""}</b>
-      <div class="np-badges"><span class="np-badge" style="background:${m[0]};color:${m[1]}">${m[2]}</span>${isPlusRow(r)?`<span class="np-badge" style="background:#FFF7D6;color:#a16207">⭐ Plus s/d ${tgl(r.plus_until)}${r.plus_source==="trial"?" (coba)":""}</span>`:r.is_admin?"":'<span class="np-badge" style="background:#F1F0F4;color:#666">Basic</span>'}${r.has_recovery?"":'<span class="np-badge" style="background:#F3F0FF;color:#6d28d9">Tanpa pertanyaan keamanan</span>'}</div>
+      <div class="np-badges"><span class="np-badge" style="background:${m[0]};color:${m[1]}">${m[2]}</span>${isPlusRow(r)?`<span class="np-badge" style="background:#FFF7D6;color:#a16207">⭐ Plus ${isLife(r.plus_until)?"selamanya":"s/d "+tgl(r.plus_until)+(r.plus_source==="trial"?" (coba)":"")}</span>`:r.is_admin?"":'<span class="np-badge" style="background:#F1F0F4;color:#666">Basic</span>'}${r.has_recovery?"":'<span class="np-badge" style="background:#F3F0FF;color:#6d28d9">Tanpa pertanyaan keamanan</span>'}</div>
       <span class="np-meta">Daftar ${tgl(r.created_at)} · ${ago(r.last_seen)} · ${r.days_written} hari tercatat · ${r.files} file</span></div>
       <div class="np-acts">${me?"":pend?'<button class="np-btn pri sm" data-a="approve">✓ Setujui</button><button class="np-btn danger sm" data-a="reject">Tolak</button>':blk?'<button class="np-btn pri sm" data-a="approve">Aktifkan</button>':'<button class="np-btn ghost sm" data-a="block" style="color:#be7b1b">⏸️ Nonaktifkan</button>'}
       ${me?"":`<button class="np-btn ghost sm" data-a="plus" style="color:#a16207">⭐ Plus</button><button class="np-btn ghost sm" data-a="pw" style="color:#7c3aed">🔑 Reset</button><button class="np-btn ghost sm" data-a="adm">${r.is_admin?"Cabut admin":"👑 Jadikan admin"}</button><button class="np-btn danger sm" data-a="del">🗑 Hapus</button>`}</div></div>`}
@@ -995,7 +998,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     if(a==="approve")return setStatus(r,"active");
     if(a==="reject"||a==="block")return setStatus(r,"blocked");
     if(a==="adm"){const {data,error}=await sb.rpc("rt_admin_set_admin",{p_user:id,p_value:!r.is_admin});toast(error?"Gagal: "+error.message:data==="ok"?`@${r.username} ${r.is_admin?"bukan admin lagi":"sekarang admin 👑"}`:"Tidak bisa mengubah akunmu sendiri.");if(!error)loadAdmin(true);return}
-    if(a==="plus")return openModal("Paket @"+r.username,`<p>${isPlusRow(r)?`Plus aktif sampai <b>${tgl(r.plus_until)}</b>.`:"Saat ini memakai Basic."} Pakai ini untuk hadiah, kompensasi, atau pembayaran di luar aplikasi.</p><div class="np-merr"></div><label>Tambah masa Plus (hari)</label><input type="number" id="psDays" min="1" max="3660" value="30"><button class="np-btn pri block" id="psGo" data-id="${id}">⭐ Tambah Plus</button>${isPlusRow(r)?`<button class="np-btn danger block" id="psOff" data-id="${id}" style="margin-top:8px">Cabut Plus sekarang</button>`:""}`);
+    if(a==="plus")return openModal("Paket @"+r.username,`<p>${isPlusRow(r)?(isLife(r.plus_until)?"Plus aktif <b>selamanya</b>.":`Plus aktif sampai <b>${tgl(r.plus_until)}</b>.`):"Saat ini memakai Basic."} Pakai ini untuk hadiah, kompensasi, atau pembayaran di luar aplikasi.</p><div class="np-merr"></div><label>Tambah masa Plus (hari)</label><input type="number" id="psDays" min="1" max="3660" value="30"><button class="np-btn pri block" id="psGo" data-id="${id}">⭐ Tambah Plus</button><button class="np-btn ghost block" id="psLife" data-id="${id}" style="margin-top:8px">♾️ Jadikan Plus selamanya</button>${isPlusRow(r)?`<button class="np-btn danger block" id="psOff" data-id="${id}" style="margin-top:8px">Cabut Plus sekarang</button>`:""}`);
     if(a==="pw")return openModal("Reset Sandi",`<p>Buat kata sandi sementara untuk <b>@${escA(r.username)}</b>. Beri tahu sandi ini ke pemiliknya, lalu minta dia menggantinya sendiri.</p><div class="np-merr"></div><label>Kata sandi sementara</label><input type="text" id="rsP" autocomplete="off" spellcheck="false" placeholder="minimal 6 karakter"><button class="np-btn pri block" id="rsGo" data-id="${id}">Reset Sandi Sekarang</button>`);
     if(a==="del")return openModal("Hapus Akun",`<p>Akun <b>@${escA(r.username)}</b> beserta ${r.days_written} hari catatannya akan dihapus permanen. Tindakan ini tidak bisa dibatalkan.</p><button class="np-btn danger block" id="delGo" data-id="${id}">🗑 Ya, hapus permanen</button><button class="np-btn ghost block" id="delNo">Batal</button>`);
   });
@@ -1075,7 +1078,9 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     const {error}=await sb.from("rt_feedback").update({status:a==="done"?"selesai":"baru"}).eq("id",id);toast(error?"Gagal: "+error.message:a==="done"?"Ditandai selesai ✓":"Dibuka lagi");loadFeedback()});
   document.addEventListener("click",e=>{if(e.target.closest("#fbRefresh")){loadFeedback();toast("Memuat ulang…")}});
   // ---------- paket Basic / Plus ----------
-  const PRICES={1:49000,3:147000,12:490000};
+  const PRICE=49000,PRICE_OLD=150000;
+  const isLife=t=>!!t&&new Date(t).getFullYear()>=2900;
+  const durTxt=m=>+m===0?"Plus selamanya":m+" bulan";
   const rp=n=>"Rp"+Number(n).toLocaleString("id-ID");
   const PLUS_BEN=["Peta Pemicu dan pola emosi lengkap","Meditasi terpandu 5–10 menit","Semua pola napas","Semua tema warna, termasuk mode Malam","Ekspor PDF untuk dibawa konsultasi","Hingga 10 foto/video per hari (Basic: 1)"];
   const isMissing=e=>/rt_my_plan|rt_payments|function|does not exist|schema cache|could not find/i.test((e&&e.message)||"");
@@ -1093,23 +1098,24 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     const box=document.getElementById("planBody");if(!box)return;
     if(planErr){box.innerHTML=`<p class="help" style="margin:0">Pilihan paket aktif setelah admin menjalankan SQL paket. Sementara ini semua fitur terbuka untukmu.</p>`;return}
     if(!myPlan){box.textContent="Memeriksa…";return}
-    const plus=myPlan.tier==="plus",until=myPlan.plus_until?new Date(myPlan.plus_until):null,left=until?Math.ceil((until-Date.now())/864e5):0;
-    let h=plus?`<p class="pl-st">⭐ Kamu memakai <b>Ruang Tenang Plus</b>${myPlan.plus_source==="trial"?" (masa coba)":""}.${until?`<br>Aktif sampai <b>${tgl(until)}</b> · ${left} hari lagi.`:""}</p>`
-      :`<p class="pl-st">Kamu memakai <b>Ruang Tenang Basic</b> (gratis).</p><p class="help" style="margin:6px 0 4px">Dengan Plus (${rp(PRICES[1])}/bulan) kamu juga dapat:</p><ul class="pl-ben" style="margin-bottom:10px">${PLUS_BEN.map(b=>`<li>${b}</li>`).join("")}</ul>`;
-    if(plus&&until&&left<=3)h+=`<p class="help" style="color:#be123c">Masa Plus hampir habis. Perpanjang supaya fitur Plus tetap terbuka. Catatanmu tidak akan hilang walau kembali ke Basic.</p>`;
+    const plus=myPlan.tier==="plus",life=isLife(myPlan.plus_until),until=myPlan.plus_until&&!life?new Date(myPlan.plus_until):null,left=until?Math.ceil((until-Date.now())/864e5):0;
+    let h=plus?(life?`<p class="pl-st">⭐ Kamu memakai <b>Ruang Tenang Plus</b>, aktif <b>selamanya</b>. Terima kasih sudah mendukung Ruang Tenang 🌸</p>`
+        :`<p class="pl-st">⭐ Kamu memakai <b>Ruang Tenang Plus</b>${myPlan.plus_source==="trial"?" (masa coba)":""}.${until?`<br>Aktif sampai <b>${tgl(until)}</b> · ${left} hari lagi.`:""}</p>`)
+      :`<p class="pl-st">Kamu memakai <b>Ruang Tenang Basic</b> (gratis).</p><div class="pl-price"><s>${rp(PRICE_OLD)}</s><b>${rp(PRICE)}</b><span>Sekali bayar, Plus aktif selamanya</span></div><p class="help" style="margin:6px 0 4px">Dengan Plus kamu juga dapat:</p><ul class="pl-ben" style="margin-bottom:10px">${PLUS_BEN.map(b=>`<li>${b}</li>`).join("")}</ul>`;
+    if(plus&&until&&left<=3)h+=`<p class="help" style="color:#be123c">Masa Plus hampir habis. Ambil Plus selamanya supaya fiturnya tetap terbuka. Catatanmu tidak akan hilang walau kembali ke Basic.</p>`;
     if(myPlan.pending)h+=`<p class="help">⏳ Konfirmasi pembayaranmu sedang dicek admin. Plus aktif otomatis setelah disetujui.</p>`;
-    h+=`<div class="row" style="margin-top:10px">${!plus&&!myPlan.trial_used?`<button class="btn" id="planTrial">🎁 Coba Plus 7 hari gratis</button>`:""}${myPlan.pending?"":`<button class="btn${!plus&&!myPlan.trial_used?" ghost":""}" id="planUp">${plus?"Perpanjang Plus":"⭐ Berlangganan Plus"}</button>`}</div>
+    h+=`<div class="row" style="margin-top:10px">${!plus&&!myPlan.trial_used?`<button class="btn" id="planTrial">🎁 Coba Plus 7 hari gratis</button>`:""}${myPlan.pending||life?"":`<button class="btn${!plus&&!myPlan.trial_used?" ghost":""}" id="planUp">⭐ Ambil Plus selamanya · ${rp(PRICE)}</button>`}</div>
       <p class="help" style="margin:10px 0 0">Jeda darurat, penahan pesan, Rencana Kalau–Maka, dan latihan napas dasar selalu gratis.</p><div id="planHist"></div>`;
     box.innerHTML=h;
     try{const {data}=await sb.from("rt_payments").select("months,amount,status,admin_note,created_at").eq("user_id",session.user.id).order("created_at",{ascending:false}).limit(3);
-      const ph=document.getElementById("planHist");if(ph&&data&&data.length)ph.innerHTML=`<p class="label" style="margin:14px 0 6px;font-size:13px">Riwayat pembayaran</p>`+data.map(x=>`<div class="help" style="padding:6px 0;border-top:1px solid #f3dbe3">${tgl(x.created_at)} · ${x.months} bulan · ${rp(x.amount)} · ${x.status==="disetujui"?"✅ disetujui":x.status==="ditolak"?"❌ ditolak":"⏳ dicek admin"}${x.admin_note?`<br><i>${escA(x.admin_note)}</i>`:""}</div>`).join("")}catch(e){}
+      const ph=document.getElementById("planHist");if(ph&&data&&data.length)ph.innerHTML=`<p class="label" style="margin:14px 0 6px;font-size:13px">Riwayat pembayaran</p>`+data.map(x=>`<div class="help" style="padding:6px 0;border-top:1px solid #f3dbe3">${tgl(x.created_at)} · ${durTxt(x.months)} · ${rp(x.amount)} · ${x.status==="disetujui"?"✅ disetujui":x.status==="ditolak"?"❌ ditolak":"⏳ dicek admin"}${x.admin_note?`<br><i>${escA(x.admin_note)}</i>`:""}</div>`).join("")}catch(e){}
   }
   async function payInfoText(){try{const {data}=await sb.from("rt_config").select("value").eq("key","payment").maybeSingle();return((data&&data.value)||{}).text||""}catch(e){return""}}
   window.__rtUpgrade=async function(what){
-    if(!myPlan)return;
+    if(!myPlan||isLife(myPlan.plus_until))return;
     const trial=myPlan.tier!=="plus"&&!myPlan.trial_used;
     const form=myPlan.pending?`<p>⏳ Konfirmasi pembayaranmu sebelumnya masih dicek admin. Plus aktif otomatis setelah disetujui.</p>`
-      :`<label>Pilih paket</label><div class="pl-opts">${[1,3,12].map(m=>`<label class="pl-opt"><input type="radio" name="plM" value="${m}"${m===1?" checked":""}>${m} bulan${m===12?" · hemat 2 bulan":""}<span>${rp(PRICES[m])}</span></label>`).join("")}</div>
+      :`<div class="pl-price big"><s>${rp(PRICE_OLD)}</s><b>${rp(PRICE)}</b><span>Sekali bayar · Plus aktif selamanya · tanpa tagihan bulanan</span></div>
       <label>Cara bayar</label><div class="pl-info" id="plInfo">Memuat…</div>
       <label>Metode yang kamu pakai</label><select id="plMet"><option>Transfer bank</option><option>QRIS</option><option>DANA</option><option>GoPay</option><option>OVO</option><option>ShopeePay</option></select>
       <label>Nama pengirim (sesuai rekening / e-wallet)</label><input id="plSender" maxlength="80" autocomplete="name">
@@ -1117,17 +1123,17 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
       <label>Foto bukti bayar (opsional, maks 5 MB)</label><input type="file" id="plProof" accept="image/jpeg,image/png,image/webp">
       <div class="np-merr"></div><button class="np-btn pri block" id="plGo">Saya sudah bayar, kirim konfirmasi</button>`;
     openModal("⭐ Ruang Tenang Plus",`${what?`<p><b>${escA(what)}</b> termasuk fitur Plus.</p>`:""}<ul class="pl-ben">${PLUS_BEN.map(b=>`<li>${b}</li>`).join("")}</ul>
-      ${trial?`<button class="np-btn pri block" id="trialGo">🎁 Coba gratis 7 hari</button><div class="pl-or">atau langsung berlangganan</div>`:""}${form}`);
+      ${trial?`<button class="np-btn pri block" id="trialGo">🎁 Coba gratis 7 hari</button><div class="pl-or">atau langsung ambil Plus selamanya</div>`:""}${form}`);
     const info=document.getElementById("plInfo");if(info){const t=await payInfoText();info.textContent=t||"Admin belum mengisi info pembayaran. Coba lagi nanti, atau kirim pesan lewat Lapor & Masukan."}
   };
   async function startTrial(btn){btn.disabled=true;const {data,error}=await sb.rpc("rt_start_trial");btn.disabled=false;
-    if(error)return toast("Gagal: "+error.message);if(data!=="ok")return toast(data==="used"?"Masa coba sudah pernah dipakai.":"Akun belum aktif.");
+    if(error)return toast("Gagal: "+error.message);if(data!=="ok")return toast(data==="used"?"Masa coba sudah pernah dipakai.":data==="already_plus"?"Kamu sudah memakai Plus.":"Akun belum aktif.");
     closeModal();toast("🎁 Plus aktif 7 hari. Selamat mencoba!");loadPlan()}
   document.addEventListener("click",async e=>{const t=e.target.closest("button");if(!t||!session)return;
     if(t.id==="planUp")return window.__rtUpgrade();
     if(t.id==="planTrial"||t.id==="trialGo")return startTrial(t);
     if(t.id==="plGo"){
-      const m=+((document.querySelector('input[name="plM"]:checked')||{}).value||1),sender=$("#plSender").value.trim(),f=$("#plProof").files[0];
+      const m=0,sender=$("#plSender").value.trim(),f=$("#plProof").files[0];
       if(sender.length<2)return mErr("Tulis nama pengirim supaya admin bisa mencocokkan pembayaran.");
       if(f&&(!/^image\/(jpeg|png|webp)$/.test(f.type)||f.size>5*1024*1024))return mErr("Bukti harus foto JPG/PNG/WEBP, maksimal 5 MB.");
       t.disabled=true;t.textContent="Mengirim…";let proof=null;
@@ -1148,7 +1154,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
     if(error){box.innerHTML=`<p class="np-empty">${isMissing(error)?"Jalankan supabase-paket.sql di Supabase untuk mengaktifkan paket dan pembayaran.":"Gagal memuat: "+escA(error.message)}</p>`;return}
     payRows=data||[];const pend=payRows.filter(x=>x.status==="menunggu"),done=payRows.filter(x=>x.status!=="menunggu").slice(0,15);
     const SC={menunggu:["#FFF4E5","#c2691b","Menunggu"],disetujui:["#E6FAF5","#0f9d7a","Disetujui"],ditolak:["#FFF1F3","#be123c","Ditolak"]};
-    const item=x=>{const c=SC[x.status];return `<div class="pay-item ${x.status==="menunggu"?"pend":""}" data-id="${x.id}"><div class="ph"><span class="np-badge" style="background:${c[0]};color:${c[1]}">${c[2]}</span><b>@${escA(x.username)}</b><b>${rp(x.amount)}</b><span class="np-meta">${x.months} bulan · ${tgl(x.created_at)} ${new Date(x.created_at).toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}</span></div>
+    const item=x=>{const c=SC[x.status];return `<div class="pay-item ${x.status==="menunggu"?"pend":""}" data-id="${x.id}"><div class="ph"><span class="np-badge" style="background:${c[0]};color:${c[1]}">${c[2]}</span><b>@${escA(x.username)}</b><b>${rp(x.amount)}</b><span class="np-meta">${durTxt(x.months)} · ${tgl(x.created_at)} ${new Date(x.created_at).toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}</span></div>
       <p class="pm">${escA(x.method)} · a.n. <b>${escA(x.sender)}</b>${x.note?` · ${escA(x.note)}`:""}${x.admin_note?`<br>Catatan admin: ${escA(x.admin_note)}`:""}</p>
       <div class="fa" style="display:flex;gap:6px;flex-wrap:wrap">${x.proof_path?'<button class="np-btn ghost sm" data-p="proof">🧾 Lihat bukti</button>':""}${x.status==="menunggu"?'<button class="np-btn pri sm" data-p="ok">✓ Setujui</button><button class="np-btn danger sm" data-p="no">Tolak</button>':""}</div></div>`};
     box.innerHTML=(pend.length?`<div class="np-h">Menunggu dicek (${pend.length})</div>`+pend.map(item).join(""):'<p class="np-empty" style="padding:10px 0">Tidak ada pembayaran yang menunggu.</p>')+(done.length?`<div class="np-h" style="margin-top:14px">Riwayat terakhir</div>`+done.map(item).join(""):"");
@@ -1161,17 +1167,17 @@ const SUPABASE_ANON_KEY = "sb_publishable_Yk31_UWBxsmCHCrv6ypfBA_T5aRZfNv";
       return toast(error?"Gagal: "+error.message:"Info pembayaran disimpan 💳")}
     const b=e.target.closest("button[data-p]");if(!b)return;const x=payRows.find(r=>r.id===+b.closest(".pay-item").dataset.id);if(!x)return;
     if(b.dataset.p==="proof"){const {data,error}=await sb.storage.from("rt-bukti").createSignedUrl(x.proof_path,300);if(error||!data)return toast("Bukti tidak bisa dibuka.");
-      return openModal("Bukti bayar @"+x.username,`<img src="${escA(data.signedUrl)}" alt="Bukti bayar" style="width:100%;border-radius:12px;display:block"><p style="margin-top:10px">${rp(x.amount)} · ${x.months} bulan · a.n. ${escA(x.sender)}</p>`)}
+      return openModal("Bukti bayar @"+x.username,`<img src="${escA(data.signedUrl)}" alt="Bukti bayar" style="width:100%;border-radius:12px;display:block"><p style="margin-top:10px">${rp(x.amount)} · ${durTxt(x.months)} · a.n. ${escA(x.sender)}</p>`)}
     if(b.dataset.p==="ok"){if(!b.classList.contains("sure")){b.classList.add("sure");b.textContent=`Yakin ${rp(x.amount)} sudah masuk?`;return}
       b.disabled=true;const {data,error}=await sb.rpc("rt_admin_decide_payment",{p_id:x.id,p_approve:true,p_note:""});
-      toast(error?"Gagal: "+error.message:data==="ok"?`Plus @${x.username} aktif +${x.months} bulan ⭐`:"Sudah diproses sebelumnya.");loadPayments();loadAdmin(true);return}
+      toast(error?"Gagal: "+error.message:data==="ok"?`Plus @${x.username} aktif ${+x.months===0?"selamanya":"+"+x.months+" bulan"} ⭐`:"Sudah diproses sebelumnya.");loadPayments();loadAdmin(true);return}
     if(b.dataset.p==="no")return openModal("Tolak Pembayaran",`<p>Tolak konfirmasi <b>@${escA(x.username)}</b> (${rp(x.amount)}). Alasan akan terlihat oleh pengguna.</p><div class="np-merr"></div><label>Alasan</label><input id="pnNote" maxlength="300" placeholder="mis. Dana belum masuk, mohon cek nominal"><button class="np-btn danger block" id="pnGo" data-id="${x.id}">Tolak pembayaran</button>`);
   });
-  document.addEventListener("click",async e=>{const t=e.target.closest("#pnGo,#psGo,#psOff");if(!t)return;
+  document.addEventListener("click",async e=>{const t=e.target.closest("#pnGo,#psGo,#psOff,#psLife");if(!t)return;
     if(t.id==="pnGo"){t.disabled=true;const {error}=await sb.rpc("rt_admin_decide_payment",{p_id:+t.dataset.id,p_approve:false,p_note:$("#pnNote").value});closeModal();toast(error?"Gagal: "+error.message:"Pembayaran ditolak");loadPayments();return}
-    const days=t.id==="psOff"?0:parseInt($("#psDays").value,10);if(t.id==="psGo"&&!(days>0&&days<=3660))return mErr("Isi jumlah hari (1–3660).");
+    const days=t.id==="psOff"?0:t.id==="psLife"?-1:parseInt($("#psDays").value,10);if(t.id==="psGo"&&!(days>0&&days<=3660))return mErr("Isi jumlah hari (1–3660).");
     t.disabled=true;const r=admRows.find(x=>x.user_id===t.dataset.id);const {data,error}=await sb.rpc("rt_admin_set_plus",{p_user:t.dataset.id,p_days:days});
-    closeModal();toast(error?"Gagal: "+error.message:data!=="ok"?"Gagal mengubah paket.":days?`Plus @${r?r.username:""} +${days} hari ⭐`:`Plus @${r?r.username:""} dicabut`);loadAdmin(true)});
+    closeModal();toast(error?"Gagal: "+error.message:data!=="ok"?"Gagal mengubah paket.":days<0?`Plus @${r?r.username:""} aktif selamanya ♾️`:days?`Plus @${r?r.username:""} +${days} hari ⭐`:`Plus @${r?r.username:""} dicabut`);loadAdmin(true)});
   // ---------- pengumuman global ----------
   async function loadAnnounceEditor(){try{const {data}=await sb.from("rt_config").select("value").eq("key","announcement").maybeSingle();const v=(data&&data.value)||{};$("#annText").value=v.text||"";$("#annActive").checked=!!v.active}catch(e){}}
   $("#annSave").onclick=async()=>{const text=$("#annText").value.trim(),active=$("#annActive").checked;
